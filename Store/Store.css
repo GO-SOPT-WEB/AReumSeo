@@ -1,0 +1,130 @@
+@font-face {
+  font-family: "Ansungtangmyun-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-Bold.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: coral;
+  color: white;
+  font-family: "Ansungtangmyun-Bold";
+  height: 85px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+header h2 {
+  margin-left: 20px;
+}
+
+#icon {
+  font-size: 30px;
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
+body {
+  padding-top: 85px;
+  background-color: blanchedalmond;
+  font-family: "Ansungtangmyun-Bold";
+  font-size: 20px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 170px;
+  border-radius: 30px;
+  background-color: rgb(248, 187, 167);
+}
+
+nav .title {
+  padding-left: 20px;
+  margin-bottom: -10px;
+}
+
+nav .list {
+  list-style-type: none;
+  margin-left: -30px;
+  margin-right: 10px;
+}
+
+#total,
+#ramen,
+#etc,
+#soju {
+  background-color: #fdf291;
+  color: #666666;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+#total:hover,
+#ramen:hover,
+#etc:hover,
+#soju:hover {
+  background-color: rgba(210, 226, 245, 0.8);
+  color: ivory;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  height: 150px;
+  width: 150px;
+}
+
+.card_1,
+.card_2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 225px;
+  height: 300px;
+  border-radius: 20px;
+  background-color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
+}
+
+.name {
+  margin-bottom: -5px;
+  margin-top: 30px;
+}
+
+.tag_wrap {
+  position: relative;
+  text-align: center;
+}
+
+/* 글자 수 제한 수정 필요 */
+.tag {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 150px;
+  font-size: 15px;
+  color: #666666;
+}
+
+.heart {
+  position: relative;
+  left: 80px;
+  color: rgb(248, 187, 167);
+}
