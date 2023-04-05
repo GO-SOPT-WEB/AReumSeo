@@ -17,6 +17,7 @@ header {
   top: 0;
   right: 0;
   left: 0;
+  z-index: 1;
 }
 
 header h2 {
@@ -29,18 +30,27 @@ header h2 {
   margin-right: 20px;
 }
 
+#icon:hover {
+  width: 250px;
+  height: 100vh;
+  margin: 0;
+  background-color: white;
+}
+
 body {
   padding-top: 85px;
   background-color: blanchedalmond;
   font-family: "Ansungtangmyun-Bold";
   font-size: 20px;
+  display: flex;
 }
 
 nav {
   display: flex;
   flex-direction: column;
+  position: absolute;
   height: 250px;
-  width: 170px;
+  width: 200px;
   border-radius: 30px;
   background-color: rgb(248, 187, 167);
 }
@@ -79,27 +89,49 @@ nav .list {
 
 .card {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
-}
-
-img {
-  height: 150px;
-  width: 150px;
+  flex-wrap: wrap;
+  margin-left: 200px;
 }
 
 .card_1,
-.card_2 {
+.card_2,
+.card_3,
+.card_4,
+.card_5,
+.card_6,
+.card_7,
+.card_8,
+.card_9,
+.card_10 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 225px;
+  width: 250px;
   height: 300px;
   border-radius: 20px;
   background-color: white;
-  margin-left: 20px;
   margin-right: 20px;
+  margin-bottom: 20px;
   box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
+}
+
+@media (max-width: 872px) {
+  .card_1,
+  .card_2,
+  .card_3,
+  .card_4,
+  .card_5,
+  .card_6,
+  .card_7,
+  .card_8,
+  .card_9,
+  .card_10 {
+    width: 400px;
+  }
 }
 
 .name {
@@ -112,19 +144,32 @@ img {
   text-align: center;
 }
 
-/* 글자 수 제한 수정 필요 */
 .tag {
-  display: inline-block;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  width: 150px;
+  word-break: keep-all;
+  width: 9rem;
   font-size: 15px;
   color: #666666;
+}
+
+img {
+  height: 150px;
+  width: 150px;
 }
 
 .heart {
   position: relative;
   left: 80px;
   color: rgb(248, 187, 167);
+}
+
+@media (max-width: 872px) {
+  .heart {
+    left: 150px;
+  }
+}
+
+.heart:hover {
+  color: red;
 }
