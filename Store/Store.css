@@ -6,12 +6,21 @@
   font-style: normal;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 85px;
+  background-color: blanchedalmond;
+  font-family: "Ansungtangmyun-Bold";
+  font-size: 20px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   background-color: coral;
   color: white;
-  font-family: "Ansungtangmyun-Bold";
   height: 85px;
   position: fixed;
   top: 0;
@@ -28,27 +37,35 @@ header h2 {
   font-size: 30px;
   margin-top: 25px;
   margin-right: 20px;
+  position: relative;
+  z-index: 3;
 }
 
-#icon:hover {
+.menuBar {
+  display: none;
+  color: coral;
+  font-size: 20px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+#icon:hover ~ .menuBar {
   width: 250px;
   height: 100vh;
   margin: 0;
   background-color: white;
-}
-
-body {
-  padding-top: 85px;
-  background-color: blanchedalmond;
-  font-family: "Ansungtangmyun-Bold";
-  font-size: 20px;
-  display: flex;
+  display: block;
 }
 
 nav {
   display: flex;
   flex-direction: column;
   position: absolute;
+  left: 5px;
+  top: 95px;
   height: 250px;
   width: 200px;
   border-radius: 30px;
@@ -66,10 +83,7 @@ nav .list {
   margin-right: 10px;
 }
 
-#total,
-#ramen,
-#etc,
-#soju {
+li {
   background-color: #fdf291;
   color: #666666;
   border-radius: 20px;
@@ -79,10 +93,7 @@ nav .list {
   margin-bottom: 10px;
 }
 
-#total:hover,
-#ramen:hover,
-#etc:hover,
-#soju:hover {
+li:hover {
   background-color: rgba(210, 226, 245, 0.8);
   color: ivory;
 }
@@ -96,16 +107,7 @@ nav .list {
   margin-left: 200px;
 }
 
-.card_1,
-.card_2,
-.card_3,
-.card_4,
-.card_5,
-.card_6,
-.card_7,
-.card_8,
-.card_9,
-.card_10 {
+article {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,23 +122,13 @@ nav .list {
 }
 
 @media (max-width: 872px) {
-  .card_1,
-  .card_2,
-  .card_3,
-  .card_4,
-  .card_5,
-  .card_6,
-  .card_7,
-  .card_8,
-  .card_9,
-  .card_10 {
+  article {
     width: 400px;
   }
 }
 
 .name {
-  margin-bottom: -5px;
-  margin-top: 30px;
+  margin-bottom: -10px;
 }
 
 .tag_wrap {
