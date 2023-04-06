@@ -31,6 +31,7 @@ header {
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: -15px;
   margin-bottom: 30px;
 }
 
@@ -62,11 +63,16 @@ header {
   color: #faf3d7;
 }
 
+.plan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
 .plan article {
-  float: left;
   margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .category {
@@ -120,6 +126,7 @@ header {
 .btn-wrapper {
   display: flex;
   margin: auto;
+  margin-bottom: 30px;
   text-align: center;
   justify-content: center;
   font-size: 25px;
