@@ -21,8 +21,9 @@ header {
   text-shadow: 0 3px #4699b7, 3px 0 #4699b7;
 }
 
-.date {
-  display: flex;
+.calendar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: #bed1a9;
   border-radius: 30px;
   box-shadow: 0px 7px 7px #faf3d7;
@@ -35,7 +36,7 @@ header {
   margin-bottom: 30px;
 }
 
-.date article {
+.calendar article {
   margin-left: 15px;
   margin-right: 15px;
   font-size: 20px;
@@ -132,7 +133,7 @@ header {
   font-size: 25px;
 }
 
-.calendar,
+.cal,
 .info {
   background-color: #b2c6ba;
   opacity: 0.7;
