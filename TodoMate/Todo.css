@@ -8,6 +8,7 @@
 
 body {
   display: grid;
+  place-items: center;
   font-family: "BMEULJIRO";
   justify-content: center;
   text-align: center;
@@ -15,7 +16,7 @@ body {
 }
 
 header {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   color: white;
   text-shadow: 0 3px #4699b7, 3px 0 #4699b7;
@@ -23,24 +24,35 @@ header {
 
 .calendar {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+  width: 90%;
   background-color: #bed1a9;
   border-radius: 30px;
   box-shadow: 0px 7px 7px #faf3d7;
   color: #faf3d7;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
-  margin-right: 10px;
   margin-top: -15px;
   margin-bottom: 30px;
 }
 
 .calendar article {
-  margin-left: 15px;
-  margin-right: 15px;
+  place-items: center;
   font-size: 20px;
   line-height: 0.7;
+}
+
+.calendar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+}
+
+.calendar li {
+  margin: 15px 0;
+  justify-content: center;
+  align-self: center;
 }
 
 .num {
@@ -68,12 +80,13 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  width: 80%;
 }
 
 .plan article {
   margin-bottom: 30px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: -10px;
+  margin-right: 20px;
 }
 
 .category {
@@ -81,10 +94,7 @@ header {
   border-radius: 30px;
   color: #faf3d7;
   box-shadow: 0px 5px 5px rgba(198, 191, 152, 0.7);
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px 20px;
 }
 
 #a1 {
@@ -141,8 +151,7 @@ header {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
   color: ivory;
   cursor: pointer;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0px 20px;
   padding: 15px;
 }
 
