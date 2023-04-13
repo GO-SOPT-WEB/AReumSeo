@@ -144,7 +144,7 @@ article {
   margin-top: 30px;
 }
 
-.tag_wrap {
+article ul {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -154,7 +154,7 @@ article {
   padding: 0rem;
 }
 
-.tag_wrap li {
+article ul li {
   display: inline-block;
   margin-bottom: 30px;
   padding: 0;
