@@ -10,7 +10,7 @@ body {
   display: grid;
   place-items: center;
   font-family: "BMEULJIRO";
-  justify-content: center;
+
   text-align: center;
   background-color: #dbe5f1;
 }
@@ -55,14 +55,14 @@ header {
   align-self: center;
 }
 
-.num {
+.calendar__todoRemainNum {
   z-index: 1;
   position: relative;
   color: #bed1a9;
   font-size: 20px;
 }
 
-.num:before {
+.calendar__todoRemainNum:before {
   color: #faf3d7;
   content: "♥";
   margin-top: -3px;
@@ -84,9 +84,7 @@ header {
 }
 
 .plan article {
-  margin-bottom: 30px;
-  margin-left: -10px;
-  margin-right: 20px;
+  margin: 0 20px 30px -10px;
 }
 
 .category {
@@ -130,7 +128,7 @@ header {
 }
 
 #today:before,
-#done:before {
+article .done:before {
   color: #f25766;
 }
 
@@ -143,7 +141,7 @@ header {
   font-size: 25px;
 }
 
-.cal,
+.home,
 .info {
   background-color: #b2c6ba;
   opacity: 0.7;
