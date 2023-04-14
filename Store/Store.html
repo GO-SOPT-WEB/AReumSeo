@@ -26,10 +26,20 @@
     <nav>
       <p class="title">종류</p>
       <ul class="list">
-        <li><input type="checkbox" /> 전체🍳</li>
-        <li><input type="checkbox" /> 라면🍜</li>
-        <li><input type="checkbox" /> 간단안주🥠</li>
-        <li><input type="checkbox" /> 술🍶</li>
+        <li>
+          <input id="total" type="checkbox" onchange="isChecked(this)" />
+          전체🍳
+        </li>
+        <li>
+          <input id="ramen" type="checkbox" onchange="isChecked(this)" /> 라면🍜
+        </li>
+        <li>
+          <input id="anju" type="checkbox" onchange="isChecked(this)" />
+          간단안주🥠
+        </li>
+        <li>
+          <input id="soju" type="checkbox" onchange="isChecked(this)" /> 술🍶
+        </li>
       </ul>
     </nav>
     <section class="card"></section>
