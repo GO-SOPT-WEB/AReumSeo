@@ -151,8 +151,12 @@ nav .list {
   box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
 }
 
+.cardLi button {
+  border-radius: 10px;
+  margin-left: 10px;
+}
 
-.cardArticle {
+.card article {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -171,7 +175,7 @@ nav .list {
   margin-top: 30px;
 }
 
-.cardArticle ul {
+.card article ul {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -181,7 +185,7 @@ nav .list {
   padding: 0rem;
 }
 
-.cardArticle ul li {
+.card article ul li {
   display: inline-block;
   margin-bottom: 30px;
   padding: 0;

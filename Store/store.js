@@ -74,23 +74,7 @@ const cardData = [
 function isChecked(checked) {
   if (checked.checked === true) {
     showCard(checked.id);
-  } else {
-    discardCard(checked.id);
-  }
-}
-
-function showCard(checkedId) {
-  const filteredData = getFilteredData(checkedId);
-  const cardSection = document.querySelector(".card");
-  const categorySection = document.querySelector(".category");
-
-  const cardList = createList(checkedId);
-  categorySection.appendChild(cardList);
-
-  filteredData.forEach((data) => {
-    const cardArticle = createCard(data);
-    cardSection.appendChild(cardArticle);
-  });
+  } 
 }
 
 function getFilteredData(checkedId) {
@@ -108,6 +92,18 @@ function getFilteredData(checkedId) {
   }
 }
 
+/* card */
+
+function showCard(checkedId) {
+  const filteredData = getFilteredData(checkedId);
+  const cardSection = document.querySelector(".card");
+
+  filteredData.forEach((data) => {
+    const cardArticle = createCard(data);
+    cardSection.appendChild(cardArticle);
+  });
+}
+
 function createCard(data) {
   const cardArticle = document.createElement("article");
   const cardName = document.createElement("p");
@@ -115,12 +111,11 @@ function createCard(data) {
   const cardImg = document.createElement("img");
   const cardHeart = document.createElement("p");
 
-  cardArticle.className = "cardArticle";
+  cardArticle.className = data.class;
 
   cardHeart.textContent = "♥";
   cardHeart.className = "heart";
 
-  cardName.className = "name";
   cardName.textContent = data.name;
 
   data.tags.forEach((tag) => {
@@ -138,22 +133,3 @@ function createCard(data) {
 
   return cardArticle;
 }
-
-function createList(data) {
-  const cardHeader = document.createElement("header");
-  const cardUl = document.createElement("ul");
-  const cardLi = document.createElement("li");
-
-  cardHeader.className = "categoryHeader";
-
-  cardUl.className = "cardUl";
-  cardLi.className = "cardLi";
-  cardLi.id = data;
-  cardLi.textContent = data;
-
-  cardUl.appendChild(cardLi);
-  cardHeader.append(cardUl);
-  
-  return cardHeader;
-}
-
