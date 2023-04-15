@@ -116,44 +116,42 @@ nav .list {
   color: ivory;
 }
 
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  left: 210px;
+  right: 0;
+}
+
+.category article {
+  display: flex;
+  border-radius: 30px;
+  font-size: 17px;
+  color: #666666;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
+  padding: 0px 15px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+
+.category button {
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
   flex-wrap: wrap;
   margin-left: 210px;
-}
-
-.category {
-  display: flex;
-}
-
-.categoryHeader {
-  justify-content: center;
-  align-items: center;
-  top: 70px;
-  background-color: transparent;
-}
-
-.cardUl {
-  display: grid;
-  grid-template-columns: repeat(4, 10fr);
-}
-
-.cardLi {
-  padding: 5px 20px;
-  margin: 0px 30px;
-  border-radius: 20px;
-
-  color: #666666;
-  background-color: white;
-  box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
-}
-
-.cardLi button {
-  border-radius: 10px;
-  margin-left: 10px;
+  margin-top: 75px;
+  margin-bottom: 50px;
 }
 
 .card article {
@@ -211,62 +209,38 @@ img {
 }
 
 @media (max-width: 872px) {
-  .cardLi {
-    padding: 5px 10px;
-    margin: 0px 20px;
-  }
   .cardArticle {
     width: 400px;
     margin-right: 0;
   }
-
-  .heart {
-    left: 150px;
-  }
 }
 
 @media (max-width: 700px) {
-  .cardLi {
-    padding: 5px 10px;
-    margin: 0px 10px;
-  }
   .cardArticle {
     width: 330px;
     margin-right: 0;
   }
 
   .heart {
-    left: 120px;
+    left: 70px;
   }
 }
 
 @media (max-width: 610px) {
-  .cardLi {
-    padding: 5px 10px;
-    margin: 0px 5px;
-  }
   .cardArticle {
     width: 270px;
     margin-right: 0;
   }
 
   .heart {
-    left: 90px;
+    left: 60px;
   }
 }
 
 @media (max-width: 550px) {
-  .cardLi {
-    padding: 5px 5px;
-    margin: 0px 10px;
-  }
   .cardArticle {
     width: 225px;
     margin-right: 0;
-  }
-
-  .heart {
-    left: 80px;
   }
 }
 

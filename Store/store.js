@@ -74,6 +74,7 @@ const cardData = [
 function isChecked(checked) {
   if (checked.checked === true) {
     showCard(checked.id);
+    showCategory(checked.id, checked.value);
   } else {
     discardCard(checked.id);
   }
@@ -92,6 +93,31 @@ function getFilteredData(checkedId) {
     default:
       return [];
   }
+}
+
+/* category */
+
+var categoryData = [];
+
+function showCategory(checkedId, checkedValue) {
+  const categorySection = document.querySelector(".category");
+  const categoryArticle = document.createElement("article");
+  const categoryItem = document.createElement("p");
+  const deleteBtn = document.createElement("button");
+
+  categoryData.push(checkedId);
+
+  categoryArticle.className = checkedId;
+  categoryItem.textContent = checkedValue;
+  deleteBtn.textContent = "X";
+
+  deleteBtn.onclick = function () {
+    discardCard(checkedId);
+  };
+
+  categoryItem.appendChild(deleteBtn);
+  categoryArticle.appendChild(categoryItem);
+  categorySection.appendChild(categoryArticle);
 }
 
 /* card */
@@ -118,6 +144,7 @@ function createCard(data) {
   cardHeart.textContent = "♥";
   cardHeart.className = "heart";
 
+  cardName.className = "name";
   cardName.textContent = data.name;
 
   data.tags.forEach((tag) => {
