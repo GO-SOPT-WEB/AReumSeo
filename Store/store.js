@@ -74,7 +74,9 @@ const cardData = [
 function isChecked(checked) {
   if (checked.checked === true) {
     showCard(checked.id);
-  } 
+  } else {
+    discardCard(checked.id);
+  }
 }
 
 function getFilteredData(checkedId) {
@@ -132,4 +134,17 @@ function createCard(data) {
   cardArticle.appendChild(cardHeart);
 
   return cardArticle;
+}
+
+function discardCard(checkedId) {
+  const cardSection = document.querySelector(".card");
+  const articles = cardSection.querySelectorAll("article");
+
+  articles.forEach((article) => {
+    if (article.className === checkedId) {
+      article.remove();
+    }
+  });
+
+  document.getElementById(checkedId).checked = false;
 }
