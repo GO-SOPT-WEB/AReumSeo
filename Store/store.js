@@ -71,12 +71,51 @@ const cardData = [
   },
 ];
 
+function isChecked(checked) {
+  if (checked.checked === true) {
+    showCard(checked.id);
+  } else {
+    discardCard(checked.id);
+  }
+}
+
+function showCard(checkedId) {
+  const filteredData = getFilteredData(checkedId);
+  const cardSection = document.querySelector(".card");
+  const categorySection = document.querySelector(".category");
+
+  const cardList = createList(checkedId);
+  categorySection.appendChild(cardList);
+
+  filteredData.forEach((data) => {
+    const cardArticle = createCard(data);
+    cardSection.appendChild(cardArticle);
+  });
+}
+
+function getFilteredData(checkedId) {
+  switch (checkedId) {
+    case "total":
+      return cardData;
+    case "ramen":
+      return cardData.filter((it) => it.class === "ramen");
+    case "anju":
+      return cardData.filter((it) => it.class === "anju");
+    case "soju":
+      return cardData.filter((it) => it.class === "soju");
+    default:
+      return [];
+  }
+}
+
 function createCard(data) {
   const cardArticle = document.createElement("article");
   const cardName = document.createElement("p");
   const cardTags = document.createElement("ul");
   const cardImg = document.createElement("img");
   const cardHeart = document.createElement("p");
+
+  cardArticle.className = "cardArticle";
 
   cardHeart.textContent = "♥";
   cardHeart.className = "heart";
@@ -100,32 +139,21 @@ function createCard(data) {
   return cardArticle;
 }
 
-function isChecked(checked) {
-  if (checked.checked) {
-    showCard(checked.id);
-  }
+function createList(data) {
+  const cardHeader = document.createElement("header");
+  const cardUl = document.createElement("ul");
+  const cardLi = document.createElement("li");
+
+  cardHeader.className = "categoryHeader";
+
+  cardUl.className = "cardUl";
+  cardLi.className = "cardLi";
+  cardLi.id = data;
+  cardLi.textContent = data;
+
+  cardUl.appendChild(cardLi);
+  cardHeader.append(cardUl);
+  
+  return cardHeader;
 }
 
-function filteredData(checkedId) {
-  switch (checkedId) {
-    case "total":
-      return cardData;
-    case "ramen":
-      return cardData.filter((it) => it.class === "ramen");
-    case "anju":
-      return cardData.filter((it) => it.class === "anju");
-    case "soju":
-      return cardData.filter((it) => it.class === "soju");
-    default:
-      return [];
-  }
-}
-
-function showCard(checkedId) {
-  const cardSection = document.querySelector(".card");
-  const isFiltered = filteredData(checkedId);
-  isFiltered.forEach((data) => {
-    const cardArticle = createCard(data);
-    cardSection.appendChild(cardArticle);
-  });
-}

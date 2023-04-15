@@ -125,7 +125,34 @@ nav .list {
   margin-left: 210px;
 }
 
-article {
+.category {
+  display: flex;
+}
+
+.categoryHeader {
+  justify-content: center;
+  align-items: center;
+  top: 70px;
+  background-color: transparent;
+}
+
+.cardUl {
+  display: grid;
+  grid-template-columns: repeat(4, 10fr);
+}
+
+.cardLi {
+  padding: 5px 20px;
+  margin: 0px 30px;
+  border-radius: 20px;
+
+  color: #666666;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
+}
+
+
+.cardArticle {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -144,7 +171,7 @@ article {
   margin-top: 30px;
 }
 
-article ul {
+.cardArticle ul {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -154,7 +181,7 @@ article ul {
   padding: 0rem;
 }
 
-article ul li {
+.cardArticle ul li {
   display: inline-block;
   margin-bottom: 30px;
   padding: 0;
@@ -180,7 +207,11 @@ img {
 }
 
 @media (max-width: 872px) {
-  article {
+  .cardLi {
+    padding: 5px 10px;
+    margin: 0px 20px;
+  }
+  .cardArticle {
     width: 400px;
     margin-right: 0;
   }
@@ -191,7 +222,11 @@ img {
 }
 
 @media (max-width: 700px) {
-  article {
+  .cardLi {
+    padding: 5px 10px;
+    margin: 0px 10px;
+  }
+  .cardArticle {
     width: 330px;
     margin-right: 0;
   }
@@ -202,7 +237,11 @@ img {
 }
 
 @media (max-width: 610px) {
-  article {
+  .cardLi {
+    padding: 5px 10px;
+    margin: 0px 5px;
+  }
+  .cardArticle {
     width: 270px;
     margin-right: 0;
   }
@@ -213,7 +252,11 @@ img {
 }
 
 @media (max-width: 550px) {
-  article {
+  .cardLi {
+    padding: 5px 5px;
+    margin: 0px 10px;
+  }
+  .cardArticle {
     width: 225px;
     margin-right: 0;
   }
@@ -225,4 +268,10 @@ img {
 
 .heart:hover {
   color: red;
+}
+
+button {
+  background-color: #ffa4a0;
+  color: #666666;
+  left: 0;
 }
