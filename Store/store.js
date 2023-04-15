@@ -74,9 +74,10 @@ const cardData = [
 function isChecked(checked) {
   if (checked.checked === true) {
     showCard(checked.id);
-    showCategory(checked.id, checked.value);
+    checkedTotalCategory(checked);
   } else {
     discardCard(checked.id);
+    discardCategory(checked.id);
   }
 }
 
@@ -99,6 +100,19 @@ function getFilteredData(checkedId) {
 
 var categoryData = [];
 
+function checkedTotalCategory(checked) {
+  if (checked.id === "total") {
+    const otherCheckboxes = document.querySelectorAll(
+      'input[type="checkbox"]:not(#total)'
+    );
+    otherCheckboxes.forEach((otherCheckbox) => {
+      otherCheckbox.disabled = checked.checked;
+    });
+  }
+
+  showCategory(checked.id, checked.value);
+}
+
 function showCategory(checkedId, checkedValue) {
   const categorySection = document.querySelector(".category");
   const categoryArticle = document.createElement("article");
@@ -112,12 +126,33 @@ function showCategory(checkedId, checkedValue) {
   deleteBtn.textContent = "X";
 
   deleteBtn.onclick = function () {
+    discardCategory(checkedId);
     discardCard(checkedId);
   };
 
   categoryItem.appendChild(deleteBtn);
   categoryArticle.appendChild(categoryItem);
   categorySection.appendChild(categoryArticle);
+}
+
+function discardCategory(checkedId) {
+  const categorySection = document.querySelector(".category");
+  const articles = categorySection.querySelectorAll("article");
+
+  categoryData = categoryData.filter((it) => it !== checkedId);
+
+  articles.forEach((article) => {
+    if (article.className === checkedId) {
+      article.remove();
+    }
+  });
+
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.disabled = false;
+  });
+
+  document.getElementById(checkedId).checked = false;
 }
 
 /* card */
