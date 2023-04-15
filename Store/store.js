@@ -140,6 +140,12 @@ function discardCard(checkedId) {
   const cardSection = document.querySelector(".card");
   const articles = cardSection.querySelectorAll("article");
 
+  if (checkedId === "total") {
+    articles.forEach((article) => {
+      article.remove();
+    });
+  }
+
   articles.forEach((article) => {
     if (article.className === checkedId) {
       article.remove();
