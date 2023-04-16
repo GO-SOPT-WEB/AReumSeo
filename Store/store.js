@@ -228,8 +228,14 @@ function createCard(data) {
     moreTagsBtn.textContent = "➕";
 
     moreTagsBtn.onclick = () => {
-      const hiddenTags = showMoreTags(data);
-      cardArticle.appendChild(hiddenTags);
+      const shownTags = document.querySelector(`.${data.name}`);
+
+      if (shownTags) {
+        discardMoreTags(shownTags);
+      } else {
+        const hiddenTags = showMoreTags(data);
+        cardArticle.appendChild(hiddenTags);
+      }
     };
     cardArticle.appendChild(moreTagsBtn);
   }
@@ -273,4 +279,14 @@ function showMoreTags(data) {
     moreTags.append(eachTag);
   });
   return moreTags;
+}
+
+function discardMoreTags(tag) {
+  const moreTagDivs = document.querySelectorAll("div");
+
+  moreTagDivs.forEach((div) => {
+    if (div.className === tag.className) {
+      div.remove();
+    }
+  });
 }
