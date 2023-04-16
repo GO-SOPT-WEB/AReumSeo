@@ -5,13 +5,13 @@ const cardData = [
     tags: [
       "#달콤",
       "#짭짤",
-      "#된장라면",
+      "#된장맛",
       "#달콤",
       "#짭짤",
-      "#된장라면",
+      "#된장맛",
       "#달콤",
       "#짭짤",
-      "#된장라면",
+      "#된장맛",
     ],
     img: "./media/ramen_1.jpg",
   },
@@ -30,13 +30,23 @@ const cardData = [
   {
     class: "anju",
     name: "계란말이",
-    tags: ["#치즈", "#추가", "#천원원"],
+    tags: [
+      "#치즈",
+      "#추가",
+      "#천원",
+      "#치즈",
+      "#추가",
+      "#천원",
+      "#치즈",
+      "#추가",
+      "#천원",
+    ],
     img: "./media/anju_1.jpg",
   },
   {
     class: "anju",
-    name: "모둠 소시지",
-    tags: ["#다양한", "#맛"],
+    name: "소시지",
+    tags: ["#소세지", "#아채볶음"],
     img: "./media/anju_2.jpg",
   },
   {
@@ -47,8 +57,18 @@ const cardData = [
   },
   {
     class: "anju",
-    name: "치킨 가라아게",
-    tags: ["#겉은바삭", "#속은촉촉"],
+    name: "치킨가라아게",
+    tags: [
+      "#바삭",
+      "#촉촉",
+      "#달콤",
+      "#바삭",
+      "#촉촉",
+      "#달콤",
+      "#바삭",
+      "#촉촉",
+      "#달콤",
+    ],
     img: "./media/anju_4.jpg",
   },
   {
@@ -60,7 +80,17 @@ const cardData = [
   {
     class: "soju",
     name: "맥주",
-    tags: ["#카스", "#테라", "#클라우드"],
+    tags: [
+      "#카스",
+      "#테라",
+      "#클라우드",
+      "#카스",
+      "#테라",
+      "#클라우드",
+      "#카스",
+      "#테라",
+      "#클라우드",
+    ],
     img: "./media/soju_2.jpg",
   },
   {
@@ -192,6 +222,18 @@ function createCard(data) {
 
   cardArticle.appendChild(cardName);
   cardArticle.appendChild(cardTags);
+
+  if (cardTags.childElementCount > 3) {
+    const moreTagsBtn = document.createElement("button");
+    moreTagsBtn.textContent = "➕";
+
+    moreTagsBtn.onclick = () => {
+      const hiddenTags = showMoreTags(data);
+      cardArticle.appendChild(hiddenTags);
+    };
+    cardArticle.appendChild(moreTagsBtn);
+  }
+
   cardArticle.appendChild(cardImg);
   cardArticle.appendChild(cardHeart);
 
@@ -215,4 +257,20 @@ function discardCard(checkedId) {
   });
 
   document.getElementById(checkedId).checked = false;
+}
+
+/* tags */
+
+function showMoreTags(data) {
+  const moreTags = document.createElement("div");
+  const moreTagsArray = data.tags.slice(3);
+
+  moreTags.className = data.name;
+
+  moreTagsArray.forEach((moreTag) => {
+    const eachTag = document.createElement("p");
+    eachTag.textContent = moreTag;
+    moreTags.append(eachTag);
+  });
+  return moreTags;
 }

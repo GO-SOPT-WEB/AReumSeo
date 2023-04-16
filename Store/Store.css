@@ -26,7 +26,7 @@ header {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 header h1 {
@@ -142,6 +142,8 @@ nav .list {
 .category button {
   border-radius: 10px;
   margin-left: 5px;
+  background-color: #ffa4a0;
+  color: #666666;
 }
 
 .card {
@@ -157,7 +159,7 @@ nav .list {
 .card article {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 200px;
   height: 300px;
@@ -180,7 +182,7 @@ nav .list {
   width: 9rem;
   height: 0.1rem;
   flex-wrap: wrap;
-  padding: 0rem;
+  padding: 0;
 }
 
 .card article ul li {
@@ -195,10 +197,39 @@ nav .list {
   color: #666666;
 }
 
+.card article button {
+  background-color: #fdf291;
+  border-color: #666666;
+  border-radius: 20px;
+  padding: 0;
+  margin-right: -155px;
+  margin-top: -23px;
+}
+
+.card article div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  background-color: ivory;
+  color: #666666;
+  text-align: center;
+  border-radius: 20px;
+  padding: 15px;
+  z-index: 1;
+  line-height: 3px;
+  font-size: 15px;
+  box-shadow: 1px 1px 1px 1px #bdd1a6;
+}
+
 img {
+  width: 140px;
   height: 150px;
-  width: 150px;
-  margin-top: 10px;
+  min-height: 140px;
+  max-width: 150px;
+  margin-top: 5px;
+  object-fit: contain;
 }
 
 .heart {
@@ -246,10 +277,4 @@ img {
 
 .heart:hover {
   color: red;
-}
-
-button {
-  background-color: #ffa4a0;
-  color: #666666;
-  left: 0;
 }
