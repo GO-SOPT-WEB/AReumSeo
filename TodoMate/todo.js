@@ -40,11 +40,13 @@ const calendarData = [
 const todoData = [
   {
     id: "a1",
+    name: "me",
     category: "아루밍",
     tasks: ["방 치우기🫧", "맛집 투어🍕"],
   },
   {
     id: "a2",
+    name: "sopt",
     category: "SOPT",
     tasks: [
       "해삐🏵️웹팟 첫 세미나",
@@ -54,16 +56,19 @@ const todoData = [
   },
   {
     id: "a3",
+    name: "university",
     category: "한성대",
     tasks: ["캡스톤 발표🤓", "UI/UX 디자인🎨"],
   },
   {
     id: "a4",
+    name: "exercise",
     category: "운동",
     tasks: ["등산🏔️", "클라이밍🧗"],
   },
   {
     id: "a5",
+    name: "friends",
     category: "친구덜",
     tasks: ["생일파티🎂", "성수 탐방🛩️"],
   },
@@ -123,33 +128,94 @@ function showTodo(todoData) {
 
   todoData.forEach((data) => {
     const todoArticle = createTodoArticle(data);
+
     data.tasks.forEach((task) => {
-      const todoCheck = document.createElement("input");
-      const todoTask = document.createElement("p");
+      const todoCheckFinish = createTodoTasks(task)[0];
+      const todoTask = createTodoTasks(task)[1];
 
-      todoTask.textContent = task;
-      todoCheck.setAttribute("type", "checkbox");
-
-      todoArticle.appendChild(todoCheck);
+      todoArticle.appendChild(todoCheckFinish);
       todoArticle.appendChild(todoTask);
     });
     todoSection.appendChild(todoArticle);
   });
 
+  // 카테고리와 할 일 등이 포함된 아티클 생성 함수
   function createTodoArticle(data) {
     const article = document.createElement("article");
     const todoCategory = document.createElement("h2");
-    const icon = document.createElement("i");
-    icon.classList.add("fa-solid", "fa-circle-plus");
+    const addCategoryButton = document.createElement("button");
+
+    article.id = data.name;
 
     todoCategory.id = data.id;
     todoCategory.className = "category";
     todoCategory.textContent = data.category;
-    todoCategory.appendChild(icon);
+
+    addCategoryButton.textContent = "➕";
+
+    addCategoryButton.onclick = function () {
+      article.appendChild(createAddModal(data));
+    };
+
+    todoCategory.appendChild(addCategoryButton);
+
     article.appendChild(todoCategory);
 
     return article;
   }
+}
+
+// 할 일 추가 모달 생성 함수
+function createAddModal(data) {
+  const addModalContainer = document.createElement("div");
+  const addModalBg = document.createElement("div");
+  const modalInput = document.createElement("input");
+  const modalBtn = document.createElement("button");
+
+  // 새로 추가될 항목
+  let newTask;
+
+  addModalContainer.className = "modalContainer";
+  modalBtn.textContent = "추가";
+
+  modalInput.onchange = (e) => {
+    newTask = e.target.value;
+  };
+
+  modalBtn.onclick = () => {
+    // 새로 추가되는 항목이 있을 경우에만 동작
+    if (newTask !== undefined && newTask.length !== 0) {
+      const newTodoArticle = document.getElementById(data.name);
+
+      const newTodoCheck = createTodoTasks(newTask)[0];
+      const newTodo = createTodoTasks(newTask)[1];
+
+      data.tasks.push(newTask);
+
+      newTodoArticle.appendChild(newTodoCheck);
+      newTodoArticle.appendChild(newTodo);
+    }
+    addModalContainer.remove();
+  };
+
+  addModalBg.appendChild(modalInput);
+  addModalBg.appendChild(modalBtn);
+
+  addModalContainer.appendChild(addModalBg);
+
+  return addModalContainer;
+}
+
+// 카테고리 내부 할 일 생성 함수
+function createTodoTasks(task) {
+  const todoCheck = document.createElement("input");
+  const todoList = document.createElement("p");
+
+  todoList.textContent = task;
+  todoCheck.setAttribute("type", "checkbox");
+  todoCheck.className = "todoCheck";
+
+  return [todoCheck, todoList];
 }
 
 /* footer */
