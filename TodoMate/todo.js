@@ -21,7 +21,7 @@ const calendarData = [
   },
   {
     day: "금",
-    remainedTodo: 8,
+    remainedTodo: 11,
     date: 09,
     today: true,
   },
@@ -48,11 +48,7 @@ const todoData = [
     id: "a2",
     name: "sopt",
     category: "SOPT",
-    tasks: [
-      "해삐🏵️웹팟 첫 세미나",
-      "해삐🏵️웹팟 첫 뒷풀이",
-      "해삐🏵️웹팟 워크샵",
-    ],
+    tasks: ["웹팟 첫 세미나🏵️", "웹팟 첫 뒷풀이🏵️", "웹팟 워크샵🏵️"],
   },
   {
     id: "a3",
@@ -211,9 +207,10 @@ function createTodoTasks(task) {
   const todoCheck = document.createElement("input");
   const todoList = document.createElement("p");
 
-  todoList.textContent = task;
   todoCheck.setAttribute("type", "checkbox");
   todoCheck.className = "todoCheck";
+
+  todoList.textContent = task;
 
   return [todoCheck, todoList];
 }

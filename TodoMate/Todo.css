@@ -22,6 +22,7 @@ header {
   text-shadow: 0 3px #4699b7, 3px 0 #4699b7;
 }
 
+/* calendar */
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -65,9 +66,9 @@ header {
 .calendar__todoRemainNum:before {
   color: #faf3d7;
   content: "♥";
-  margin-top: -3px;
-  margin-left: -15px;
-  font-size: 40px;
+  margin-top: -8px;
+  margin-left: -20px;
+  font-size: 50px;
   z-index: -1;
   position: absolute;
 }
@@ -79,6 +80,8 @@ header {
 #today:before {
   color: #f25766;
 }
+
+/* todo */
 
 .todo {
   display: flex;
@@ -196,6 +199,8 @@ header {
   margin-left: 10px;
   padding: 3px;
 }
+
+/* footer */
 
 footer {
   display: flex;
