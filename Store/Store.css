@@ -212,6 +212,7 @@ nav .list {
   align-items: center;
   flex-wrap: wrap;
   position: absolute;
+  max-width: 185px;
   background-color: ivory;
   color: #666666;
   text-align: center;
@@ -221,6 +222,15 @@ nav .list {
   line-height: 3px;
   font-size: 15px;
   box-shadow: 1px 1px 1px 1px #bdd1a6;
+}
+
+.card div button {
+  border-radius: 30px;
+  background-color: #bdd1a6;
+  color: #666666;
+  padding: 0px 3px;
+  margin: auto;
+  margin-left: 5px;
 }
 
 img {

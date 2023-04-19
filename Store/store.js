@@ -18,13 +18,13 @@ const cardData = [
   {
     class: "ramen",
     name: "열라면",
-    tags: ["#얼큰", "#화끈", "#해장가능"],
+    tags: ["#얼큰", "#화끈", "#해장가능", "#얼큰", "#화끈", "#해장가능"],
     img: "./media/ramen_2.jpg",
   },
   {
     class: "ramen",
     name: "짜파게티",
-    tags: ["#짜장", "#촉촉", "#꾸덕"],
+    tags: ["#짜장", "#촉촉", "#꾸덕", "#짜장", "#촉촉", "#꾸덕"],
     img: "./media/ramen_3.jpg",
   },
   {
@@ -46,13 +46,20 @@ const cardData = [
   {
     class: "anju",
     name: "소시지",
-    tags: ["#소세지", "#아채볶음"],
+    tags: [
+      "#소세지",
+      "#아채볶음",
+      "#소세지",
+      "#아채볶음",
+      "#소세지",
+      "#아채볶음",
+    ],
     img: "./media/anju_2.jpg",
   },
   {
     class: "anju",
     name: "어묵탕",
-    tags: ["#뜨끈", "#담백", "#깊은맛"],
+    tags: ["#뜨끈", "#담백", "#깊은맛", "#뜨끈", "#담백", "#깊은맛"],
     img: "./media/anju_3.jpg",
   },
   {
@@ -74,8 +81,8 @@ const cardData = [
   {
     class: "soju",
     name: "소주",
-    tags: ["#참이슬", "#새로", "#진로"],
-    img: "./media/soju_1.jpg",
+    tags: ["#참이슬", "#새로", "#진로", "#참이슬", "#새로", "#진로"],
+    img: "./media/soju_1.png",
   },
   {
     class: "soju",
@@ -96,8 +103,8 @@ const cardData = [
   {
     class: "soju",
     name: "막걸리",
-    tags: ["#지평", "#느린마을", "#밤"],
-    img: "./media/soju_3.jpg",
+    tags: ["#지평", "#느린마을", "#밤", "#지평", "#느린마을", "#밤"],
+    img: "./media/soju_3.png",
   },
 ];
 
@@ -228,14 +235,8 @@ function createCard(data) {
     moreTagsBtn.textContent = "➕";
 
     moreTagsBtn.onclick = () => {
-      const shownTags = document.querySelector(`.${data.name}`);
-
-      if (shownTags) {
-        discardMoreTags(shownTags);
-      } else {
-        const hiddenTags = showMoreTags(data);
-        cardArticle.appendChild(hiddenTags);
-      }
+      const hiddenTags = showMoreTags(data);
+      cardArticle.appendChild(hiddenTags);
     };
     cardArticle.appendChild(moreTagsBtn);
   }
@@ -270,14 +271,21 @@ function discardCard(checkedId) {
 function showMoreTags(data) {
   const moreTags = document.createElement("div");
   const moreTagsArray = data.tags.slice(3);
+  const hideTagsBtn = document.createElement("button");
 
   moreTags.className = data.name;
+  hideTagsBtn.textContent = "❌";
+  hideTagsBtn.onclick = () => {
+    const shownTags = document.querySelector(`.${data.name}`);
+    discardMoreTags(shownTags);
+  };
 
   moreTagsArray.forEach((moreTag) => {
     const eachTag = document.createElement("p");
     eachTag.textContent = moreTag;
     moreTags.append(eachTag);
   });
+  moreTags.appendChild(hideTagsBtn);
   return moreTags;
 }
 
