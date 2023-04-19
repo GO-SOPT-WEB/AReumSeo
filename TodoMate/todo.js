@@ -126,10 +126,10 @@ function showTodo(todoData) {
     const todoArticle = createTodoArticle(data);
 
     data.tasks.forEach((task) => {
-      const todoCheckFinish = createTodoTasks(task)[0];
+      const todocheckRemainedTodo = createTodoTasks(task)[0];
       const todoTask = createTodoTasks(task)[1];
 
-      todoArticle.appendChild(todoCheckFinish);
+      todoArticle.appendChild(todocheckRemainedTodo);
       todoArticle.appendChild(todoTask);
     });
     todoSection.appendChild(todoArticle);
@@ -215,6 +215,28 @@ function createTodoTasks(task) {
   return [todoCheck, todoList];
 }
 
+// 오늘의 남은 할 일 개수 체크 함수
+function checkRemainedTodo() {
+  const checkedTodaysRemainedTodo = document.querySelector("#today");
+  const checkedRemainedTodo = document.getElementsByClassName("todoCheck");
+  const checkedRemainedTodoArr =
+    Array.prototype.slice.call(checkedRemainedTodo);
+  checkedRemainedTodoArr.forEach((checked) => {
+    checked.addEventListener("change", () => {
+      calendarData.forEach((data) => {
+        if (data.today) {
+          if (checked.checked) {
+            data.remainedTodo -= 1;
+          } else {
+            data.remainedTodo += 1;
+          }
+          checkedTodaysRemainedTodo.textContent = data.remainedTodo;
+        }
+      });
+    });
+  });
+}
+
 /* footer */
 
 function showFooter(footerData) {
@@ -245,5 +267,6 @@ function createFooter(data) {
 document.addEventListener("DOMContentLoaded", function () {
   showCalendar(calendarData);
   showTodo(todoData);
+  checkRemainedTodo();
   showFooter(footerData);
 });
