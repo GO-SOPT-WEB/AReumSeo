@@ -112,6 +112,7 @@ function isChecked(checked) {
   if (checked.checked === true) {
     showCard(checked.id);
     checkedTotalCategory(checked);
+    checkedCategoryNum(checked);
   } else {
     discardCard(checked.id);
     discardCategory(checked.id);
@@ -148,6 +149,13 @@ function checkedTotalCategory(checked) {
   }
 
   showCategory(checked.id, checked.value);
+}
+
+function checkedCategoryNum(checked) {
+  const checkedTotal = document.querySelector("#total");
+  if (checked.id !== "total") {
+    checkedTotal.disabled = true;
+  }
 }
 
 function showCategory(checkedId, checkedValue) {
@@ -188,8 +196,6 @@ function discardCategory(checkedId) {
   checkboxes.forEach((checkbox) => {
     checkbox.disabled = false;
   });
-
-  document.getElementById(checkedId).checked = false;
 }
 
 /* card */
