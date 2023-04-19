@@ -74,10 +74,12 @@ const footerData = [
   {
     text: "HOME",
     icon: "fa-regular fa-calendar",
+    href: "/",
   },
   {
     text: "MY",
     icon: "fa-regular fa-user",
+    href: "/myCategory",
   },
 ];
 
@@ -240,7 +242,7 @@ function checkRemainedTodo() {
 /* footer */
 
 function showFooter(footerData) {
-  const footer = document.querySelector(".btn-wrapper");
+  const footer = document.querySelector(".todoFooter");
 
   footerData.forEach((data) => {
     const footerButton = createFooter(data);
@@ -255,6 +257,10 @@ function createFooter(data) {
 
   icon.className = data.icon;
   text.textContent = data.text;
+  // 각 버튼에 맞는 페이지 이동 주소 등록
+  button.onclick = () => {
+    location.href = data.href;
+  };
 
   button.appendChild(icon);
   button.appendChild(text);
