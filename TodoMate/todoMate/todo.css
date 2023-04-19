@@ -22,6 +22,28 @@ header {
   text-shadow: 0 3px #4699b7, 3px 0 #4699b7;
 }
 
+/* myCategory */
+.myCategory {
+  width: 90%;
+  height: 120%;
+  color: #000;
+  border-radius: 30px;
+  box-shadow: 0px 7px 7px #bed1a9;
+  background-color: #faf3d7;
+}
+
+.myCategory button {
+  font-family: "BMEULJIRO";
+  font-size: 17px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px 5px;
+  background-color: #dbe5f1;
+  color: #4699b7;
+  box-shadow: 0px 3px 3px #4699b7;
+}
+
 /* calendar */
 .calendar {
   display: grid;
@@ -206,6 +228,10 @@ footer {
   margin-bottom: 30px;
   text-align: center;
   justify-content: center;
+}
+
+.categoryFooter {
+  padding-top: 550px;
 }
 
 footer button {

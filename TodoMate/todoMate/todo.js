@@ -74,12 +74,12 @@ const footerData = [
   {
     text: "HOME",
     icon: "fa-regular fa-calendar",
-    href: "/",
+    href: "/TodoMate/todoMate/todo.html",
   },
   {
     text: "MY",
     icon: "fa-regular fa-user",
-    href: "/myCategory",
+    href: "/TodoMate/myCategory/myCategory.html",
   },
 ];
 
