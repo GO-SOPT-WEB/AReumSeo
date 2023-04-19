@@ -243,23 +243,23 @@ function showFooter(footerData) {
   const footer = document.querySelector(".btn-wrapper");
 
   footerData.forEach((data) => {
-    const footerHeader = createFooter(data);
-    footer.appendChild(footerHeader);
+    const footerButton = createFooter(data);
+    footer.appendChild(footerButton);
   });
 }
 
 function createFooter(data) {
-  const header = document.createElement("h2");
+  const button = document.createElement("button");
   const icon = document.createElement("i");
   const text = document.createElement("p");
 
   icon.className = data.icon;
   text.textContent = data.text;
 
-  header.appendChild(icon);
-  header.appendChild(text);
+  button.appendChild(icon);
+  button.appendChild(text);
 
-  return header;
+  return button;
 }
 
 /* DOM */
