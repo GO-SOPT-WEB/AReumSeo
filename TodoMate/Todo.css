@@ -32,8 +32,7 @@ header {
   border-radius: 30px;
   box-shadow: 0px 7px 7px #faf3d7;
   color: #faf3d7;
-  margin-top: -15px;
-  margin-bottom: 30px;
+  margin: -15px 0px 30px 0px;
 }
 
 .calendar article {
@@ -57,20 +56,20 @@ header {
 }
 
 .calendar__todoRemainNum {
-  z-index: 1;
   position: relative;
+  z-index: 1;
   color: #bed1a9;
   font-size: 20px;
 }
 
 .calendar__todoRemainNum:before {
+  position: absolute;
   color: #faf3d7;
   content: "♥";
-  margin-top: -8px;
-  margin-left: -20px;
+  top: -8px;
+  left: -17px;
   font-size: 50px;
   z-index: -1;
-  position: absolute;
 }
 
 #today {
@@ -146,14 +145,14 @@ header {
   background-color: #c8b3aa;
 }
 
-.todo .todoCheck {
+.todoCheck {
   display: flex;
   position: relative;
   margin-top: 20px;
   appearance: none;
 }
 
-.todo .todoCheck:before {
+.todoCheck:before {
   content: "♥";
   display: inline-block;
   font-size: 20px;
@@ -167,7 +166,7 @@ header {
   margin-right: 5px;
 }
 
-.todo .todoCheck:checked:before {
+.todoCheck:checked:before {
   content: "♥";
   display: inline-block;
   font-size: 17px;
@@ -186,8 +185,7 @@ header {
   font-size: 17px;
   color: #666666;
   text-align: left;
-  margin-left: 25px;
-  margin-top: -25px;
+  margin: -25px 0px 0px 25px;
 }
 
 .todo button {
