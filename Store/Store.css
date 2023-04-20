@@ -78,7 +78,6 @@ ul {
   cursor: pointer;
 }
 
-
 /* nav */
 
 nav {
@@ -165,6 +164,17 @@ nav .list {
   margin-bottom: 50px;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .card article {
   display: flex;
   flex-direction: column;
@@ -177,6 +187,8 @@ nav .list {
   margin-right: 20px;
   margin-bottom: 20px;
   box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
+
+  animation: fadeIn 1.5s;
 }
 
 .name {
@@ -337,7 +349,7 @@ img {
 .addItems__menu input,
 .addItems__hashtag input {
   font-family: "Ansungtangmyun-Bold";
-color: #474747;
+  color: #474747;
   background-color: #eaffd4;
   border-color: #a3b293;
   border-radius: 10px;
