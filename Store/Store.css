@@ -333,17 +333,12 @@ img {
   padding: 10px 0px;
 }
 
-.addItems ul {
-  justify-content: center;
-  align-items: center;
-}
-
 .addItems__menu,
 .addItems__hashtag,
 .addItems__img {
   display: flex;
   justify-content: space-between;
-  margin-right: 20px;
+  margin: 15px 20px 0px;
 }
 
 .addItems__menu input,
