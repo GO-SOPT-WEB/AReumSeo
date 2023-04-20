@@ -304,3 +304,7 @@ function discardMoreTags(tag) {
     }
   });
 }
+
+function addNewItem() {
+  location.href = "/Store/addNewItem.html";
+}
