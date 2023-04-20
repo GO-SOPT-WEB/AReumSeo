@@ -136,7 +136,7 @@ function getFilteredData(checkedId) {
 
 /* category */
 
-var categoryData = [];
+let categoryData = [];
 
 function checkedTotalCategory(checked) {
   if (checked.id === "total") {
