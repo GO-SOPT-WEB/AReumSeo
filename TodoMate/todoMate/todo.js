@@ -110,10 +110,15 @@ function createAddModal(data) {
       const newTodoCheck = createTodoTasks(newTask)[0];
       const newTodo = createTodoTasks(newTask)[1];
 
-      data.tasks.push(newTask);
+      const alreadyAddedTask = data.tasks.filter((task) => newTask === task);
 
-      newTodoArticle.appendChild(newTodoCheck);
-      newTodoArticle.appendChild(newTodo);
+      if (alreadyAddedTask.length !== 0) {
+        alert("이미 추가된 항목입니다!");
+      } else {
+        data.tasks.push(newTask);
+        newTodoArticle.appendChild(newTodoCheck);
+        newTodoArticle.appendChild(newTodo);
+      }
     }
 
     addModalContainer.remove();
