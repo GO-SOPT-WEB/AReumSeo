@@ -69,6 +69,7 @@ function showTodo(todoData) {
     addCategoryButton.textContent = "➕";
 
     addCategoryButton.onclick = function () {
+      addCategoryButton.blur();
       article.appendChild(createAddModal(data));
     };
 
@@ -93,6 +94,10 @@ function createAddModal(data) {
   addModalContainer.className = "modalContainer";
   modalBtn.textContent = "추가";
 
+  setTimeout(() => {
+    modalInput.focus();
+  }, 200);
+
   modalInput.onchange = (e) => {
     newTask = e.target.value;
   };
@@ -110,6 +115,7 @@ function createAddModal(data) {
       newTodoArticle.appendChild(newTodoCheck);
       newTodoArticle.appendChild(newTodo);
     }
+
     addModalContainer.remove();
   };
 
