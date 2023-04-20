@@ -16,6 +16,8 @@ body {
   font-size: 20px;
 }
 
+/* header */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -76,6 +78,9 @@ ul {
   cursor: pointer;
 }
 
+
+/* nav */
+
 nav {
   display: flex;
   flex-direction: column;
@@ -116,6 +121,8 @@ nav .list {
   color: ivory;
 }
 
+/* category */
+
 .category {
   display: flex;
   flex-wrap: wrap;
@@ -145,6 +152,8 @@ nav .list {
   background-color: #ffa4a0;
   color: #666666;
 }
+
+/* card */
 
 .card {
   display: flex;
