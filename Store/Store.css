@@ -288,3 +288,66 @@ img {
 .heart:hover {
   color: red;
 }
+
+/* addMenu */
+
+.addMenu {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  background-color: #feb3af;
+  border-radius: 30px;
+  margin-top: 30px;
+  padding: 30px 0px;
+}
+
+.addItems {
+  width: 100%;
+  background-color: #fdf8c7;
+  color: #fb8a84;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  padding: 10px 0px;
+}
+
+.addItems ul {
+  justify-content: center;
+  align-items: center;
+}
+
+.addItems__menu,
+.addItems__hashtag,
+.addItems__img {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.addItems__menu input,
+.addItems__hashtag input {
+  font-family: "Ansungtangmyun-Bold";
+color: #474747;
+  background-color: #eaffd4;
+  border-color: #a3b293;
+  border-radius: 10px;
+  padding: 5px 0px;
+  margin: 0px 0px 20px 20px;
+}
+
+.addItems img {
+  margin-top: -15px;
+}
+
+.addItems__btn {
+  display: flex;
+  margin: 15px auto;
+  font-family: "Ansungtangmyun-Bold";
+  font-size: 20px;
+  background-color: #cee3b6;
+  border: none;
+  box-shadow: 2px 2px 2px 2px #a3b293;
+  border-radius: 30px;
+  padding: 10px;
+}
