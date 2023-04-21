@@ -13,19 +13,19 @@ const cardData = [
       "#짭짤",
       "#된장맛",
     ],
-    img: "./media/ramen_1.jpg",
+    img: "../media/ramen_1.jpg",
   },
   {
     class: "ramen",
     name: "열라면",
     tags: ["#얼큰", "#화끈", "#해장가능", "#얼큰", "#화끈", "#해장가능"],
-    img: "./media/ramen_2.jpg",
+    img: "../media/ramen_2.jpg",
   },
   {
     class: "ramen",
     name: "짜파게티",
     tags: ["#짜장", "#촉촉", "#꾸덕", "#짜장", "#촉촉", "#꾸덕"],
-    img: "./media/ramen_3.jpg",
+    img: "../media/ramen_3.jpg",
   },
   {
     class: "anju",
@@ -41,7 +41,7 @@ const cardData = [
       "#추가",
       "#천원",
     ],
-    img: "./media/anju_1.jpg",
+    img: "../media/anju_1.jpg",
   },
   {
     class: "anju",
@@ -54,13 +54,13 @@ const cardData = [
       "#소세지",
       "#아채볶음",
     ],
-    img: "./media/anju_2.jpg",
+    img: "../media/anju_2.jpg",
   },
   {
     class: "anju",
     name: "어묵탕",
     tags: ["#뜨끈", "#담백", "#깊은맛", "#뜨끈", "#담백", "#깊은맛"],
-    img: "./media/anju_3.jpg",
+    img: "../media/anju_3.jpg",
   },
   {
     class: "anju",
@@ -76,13 +76,13 @@ const cardData = [
       "#촉촉",
       "#달콤",
     ],
-    img: "./media/anju_4.jpg",
+    img: "../media/anju_4.jpg",
   },
   {
     class: "soju",
     name: "소주",
     tags: ["#참이슬", "#새로", "#진로", "#참이슬", "#새로", "#진로"],
-    img: "./media/soju_1.png",
+    img: "../media/soju_1.png",
   },
   {
     class: "soju",
@@ -98,13 +98,13 @@ const cardData = [
       "#테라",
       "#클라우드",
     ],
-    img: "./media/soju_2.jpg",
+    img: "../media/soju_2.jpg",
   },
   {
     class: "soju",
     name: "막걸리",
     tags: ["#지평", "#느린마을", "#밤", "#지평", "#느린마을", "#밤"],
-    img: "./media/soju_3.png",
+    img: "../media/soju_3.png",
   },
 ];
 
