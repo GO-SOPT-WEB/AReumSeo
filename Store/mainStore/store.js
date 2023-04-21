@@ -108,6 +108,7 @@ const cardData = [
   },
 ];
 
+// 추가된 데이터 반영
 function newData() {
   const cardClass = localStorage.getItem("class");
   const cardName = localStorage.getItem("name");
@@ -126,17 +127,19 @@ function newData() {
 
 const newCardData = newData();
 
+// 체크여부 판단
 function isChecked(checked) {
   if (checked.checked === true) {
     showCard(checked.id);
-    checkedTotalCategory(checked);
-    checkedCategoryNum(checked);
+    disabledOtherCategory(checked);
+    disabledTotoalCategory(checked);
   } else {
     discardCard(checked.id);
     discardCategory(checked.id);
   }
 }
 
+// 체크된 카테고리에 속하는 항목 반환
 function getFilteredData(checkedId) {
   switch (checkedId) {
     case "total":
@@ -156,7 +159,8 @@ function getFilteredData(checkedId) {
 
 let categoryData = [];
 
-function checkedTotalCategory(checked) {
+// 전체 카테고리 선택 시, 다른 카테고리 선택 비활성화 하는 함수
+function disabledOtherCategory(checked) {
   if (checked.id === "total") {
     const otherCheckboxes = document.querySelectorAll(
       'input[type="checkbox"]:not(#total)'
@@ -169,13 +173,15 @@ function checkedTotalCategory(checked) {
   showCategory(checked.id, checked.value);
 }
 
-function checkedCategoryNum(checked) {
+// 다른 카테고리 선택 시, 전체 카테고리 선택 비활성화 하는 함수
+function disabledTotoalCategory(checked) {
   const checkedTotal = document.querySelector("#total");
   if (checked.id !== "total") {
     checkedTotal.disabled = true;
   }
 }
 
+// 카테고리 모달 생성하는 함수
 function showCategory(checkedId, checkedValue) {
   const categorySection = document.querySelector(".category");
   const categoryArticle = document.createElement("article");
@@ -198,6 +204,7 @@ function showCategory(checkedId, checkedValue) {
   categorySection.appendChild(categoryArticle);
 }
 
+// 카테고리 모달 사라지게 하는 함수
 function discardCategory(checkedId) {
   const categorySection = document.querySelector(".category");
   const articles = categorySection.querySelectorAll("article");
@@ -218,6 +225,7 @@ function discardCategory(checkedId) {
 
 /* card */
 
+// 데이터 바탕으로 생성한 카드를 section에 보여지게 하는 함수
 function showCard(checkedId) {
   const filteredData = getFilteredData(checkedId);
   const cardSection = document.querySelector(".card");
@@ -228,6 +236,7 @@ function showCard(checkedId) {
   });
 }
 
+// 카드 만드는 함수
 function createCard(data) {
   const cardArticle = document.createElement("article");
   const cardName = document.createElement("p");
@@ -271,6 +280,7 @@ function createCard(data) {
   return cardArticle;
 }
 
+// section에서 카드 사라지게 하는 함수
 function discardCard(checkedId) {
   const cardSection = document.querySelector(".card");
   const articles = cardSection.querySelectorAll("article");
@@ -292,6 +302,7 @@ function discardCard(checkedId) {
 
 /* tags */
 
+// 태그 모달 보여주는 함수
 function showMoreTags(data) {
   const moreTags = document.createElement("div");
   const moreTagsArray = data.tags.slice(3);
@@ -313,6 +324,7 @@ function showMoreTags(data) {
   return moreTags;
 }
 
+// 태그 모달 사라지게 하는 함수
 function discardMoreTags(tag) {
   const moreTagDivs = document.querySelectorAll("div");
 
@@ -323,6 +335,7 @@ function discardMoreTags(tag) {
   });
 }
 
+// 새 항목 추가 클릭 시 이동
 function addNewItem() {
   location.href = "/Store/addNewItem/addNewItem.html";
 }
