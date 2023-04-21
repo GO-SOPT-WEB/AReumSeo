@@ -28,8 +28,38 @@ function selectCategory() {
   });
 }
 
+function saveInfo() {
+  const menu = document.querySelector(".input__menu");
+  const tags = document.querySelector(".input__tag");
+
+  let savedMenu;
+  let savedTag;
+
+  menu.onchange = (e) => {
+    savedMenu = e.target.value;
+    localStorage.setItem("name", savedMenu);
+  };
+
+  tags.onchange = (e) => {
+    savedTag = e.target.value;
+
+    let splitTag = savedTag.split(",");
+    localStorage.setItem("tags", JSON.stringify(splitTag));
+  };
+}
+
+function handleSubmit() {
+  const category = document.querySelectorAll("option");
+  category.forEach((it) => {
+    if (it.selected) {
+      localStorage.setItem("class", it.value);
+    }
+  });
+}
+
 /* DOM */
 
 document.addEventListener("DOMContentLoaded", function () {
   selectCategory();
+  saveInfo();
 });

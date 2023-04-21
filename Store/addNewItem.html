@@ -20,8 +20,12 @@
     <section class="addMenu">
       <h2>🍕메뉴를 추가해주세요🍔</h2>
       <article class="addItems">
-        <label class="addItems__menu">메뉴 이름 <input /></label>
-        <label class="addItems__hashtag">해시태그 (,로 구분) <input /></label>
+        <label class="addItems__menu"
+          >메뉴 이름 <input class="input__menu"
+        /></label>
+        <label class="addItems__hashtag"
+          >해시태그 (,로 구분) <input class="input__tag"
+        /></label>
         <label class="addItems__img"
           >메뉴 사진
           <input
@@ -32,7 +36,7 @@
         /></label>
         <img id="previewImg" alt="비어있는 이미지" />
         <select class="selectCategory"></select>
-        <button class="addItems__btn">🍟냠냠🌭</button>
+        <button class="addItems__btn" onclick="handleSubmit()">🍟냠냠🌭</button>
       </article>
     </section>
   </body>
