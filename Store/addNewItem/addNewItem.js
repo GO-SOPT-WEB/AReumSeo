@@ -6,8 +6,9 @@ const categoryData = [
   { title: "술🍶", value: "soju" },
 ];
 
+// 이미지 미리보기
 function handleFiles(input) {
-  if (input.files && input.files[0]) {
+  if (input.files) {
     const reader = new FileReader();
     reader.onload = function (e) {
       const previewImage = document.getElementById("previewImg");
@@ -18,6 +19,7 @@ function handleFiles(input) {
   }
 }
 
+// 카테고리 선택 함수
 function selectCategory() {
   const createdSelect = document.querySelector(".selectCategory");
   categoryData.forEach((data) => {
@@ -28,6 +30,7 @@ function selectCategory() {
   });
 }
 
+// 메뉴 이름과 태그 저장 함수
 function saveInfo() {
   const menu = document.querySelector(".input__menu");
   const tags = document.querySelector(".input__tag");
@@ -48,6 +51,7 @@ function saveInfo() {
   };
 }
 
+// 카테고리 저장 및 추가가 끝나면 메인 페이지로 돌아가게 하는 함수
 function handleSubmit() {
   const category = document.querySelectorAll("option");
   category.forEach((it) => {
