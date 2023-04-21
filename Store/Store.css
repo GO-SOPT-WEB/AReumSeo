@@ -352,8 +352,14 @@ img {
   margin: 0px 0px 20px 20px;
 }
 
-.addItems img {
-  margin-top: -15px;
+.fileUpload, #previewImg {
+  font-family: "Ansungtangmyun-Bold";
+  color: #474747;
+}
+
+#previewImg {
+  width: fit-content;
+  height: fit-content;
 }
 
 .addItems__btn {
