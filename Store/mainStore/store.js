@@ -108,6 +108,24 @@ const cardData = [
   },
 ];
 
+function newData() {
+  const cardClass = localStorage.getItem("class");
+  const cardName = localStorage.getItem("name");
+  const cardTags = JSON.parse(localStorage.getItem("tags"));
+  const cardImgSrc = "../media/meme.jpg";
+
+  cardData.push({
+    class: cardClass,
+    name: cardName,
+    tags: cardTags,
+    img: cardImgSrc,
+  });
+
+  return cardData;
+}
+
+const newCardData = newData();
+
 function isChecked(checked) {
   if (checked.checked === true) {
     showCard(checked.id);
@@ -122,13 +140,13 @@ function isChecked(checked) {
 function getFilteredData(checkedId) {
   switch (checkedId) {
     case "total":
-      return cardData;
+      return newCardData;
     case "ramen":
-      return cardData.filter((it) => it.class === "ramen");
+      return newCardData.filter((it) => it.class === "ramen");
     case "anju":
-      return cardData.filter((it) => it.class === "anju");
+      return newCardData.filter((it) => it.class === "anju");
     case "soju":
-      return cardData.filter((it) => it.class === "soju");
+      return newCardData.filter((it) => it.class === "soju");
     default:
       return [];
   }
