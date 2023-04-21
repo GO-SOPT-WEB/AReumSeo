@@ -352,7 +352,8 @@ img {
   margin: 0px 0px 20px 20px;
 }
 
-.fileUpload, #previewImg {
+.fileUpload,
+#previewImg {
   font-family: "Ansungtangmyun-Bold";
   color: #474747;
 }
@@ -360,6 +361,17 @@ img {
 #previewImg {
   width: fit-content;
   height: fit-content;
+}
+
+.selectCategory {
+  display: flex;
+  margin: 0px 0px 30px 147px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 17px;
+  background-color: #ebf3fd;
+  font-family: "Ansungtangmyun-Bold";
 }
 
 .addItems__btn {
