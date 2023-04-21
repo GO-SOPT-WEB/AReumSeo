@@ -56,7 +56,7 @@ function handleSubmit() {
     }
   });
 
-  location.href = "/Store/store.html";
+  location.href = "/Store/mainStore/store.html";
 }
 
 /* DOM */

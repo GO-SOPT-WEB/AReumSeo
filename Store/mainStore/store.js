@@ -306,5 +306,5 @@ function discardMoreTags(tag) {
 }
 
 function addNewItem() {
-  location.href = "/Store/addNewItem.html";
+  location.href = "/Store/addNewItem/addNewItem.html";
 }
