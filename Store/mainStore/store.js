@@ -259,6 +259,7 @@ function createCard(data) {
   });
 
   cardImg.src = data.img;
+  cardImg.alt = data.name;
 
   cardArticle.appendChild(cardName);
   cardArticle.appendChild(cardTags);
