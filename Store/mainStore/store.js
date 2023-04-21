@@ -115,13 +115,14 @@ function newData() {
   const cardTags = JSON.parse(localStorage.getItem("tags"));
   const cardImgSrc = "../media/meme.jpg";
 
-  cardData.push({
-    class: cardClass,
-    name: cardName,
-    tags: cardTags,
-    img: cardImgSrc,
-  });
-
+  if (cardTags && cardName) {
+    cardData.push({
+      class: cardClass,
+      name: cardName,
+      tags: cardTags,
+      img: cardImgSrc,
+    });
+  }
   return cardData;
 }
 
