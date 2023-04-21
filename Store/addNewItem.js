@@ -55,6 +55,8 @@ function handleSubmit() {
       localStorage.setItem("class", it.value);
     }
   });
+
+  location.href = "/Store/store.html";
 }
 
 /* DOM */
