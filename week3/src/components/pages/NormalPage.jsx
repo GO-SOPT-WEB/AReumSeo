@@ -1,9 +1,18 @@
 import styled from "styled-components";
 import { cardImgList } from "../../constants/cardImgList";
+import { useEffect, useState } from "react";
 
 const NormalPage = () => {
   const easyCardList = cardImgList.slice(0, 7);
   const copiedCardList = easyCardList.concat(easyCardList);
+  copiedCardList.sort(() => Math.random() - 0.5);
+
+  const [shuffledList, setShuffledList] = useState(copiedCardList);
+
+  useEffect(() => {
+    setShuffledList(shuffledList * 0.5);
+  }, []);
+
   return (
     <CardContainer>
       {copiedCardList.map((data, idx) => {
