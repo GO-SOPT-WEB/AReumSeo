@@ -1,10 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import EasyPage from "./pages/EasyPage";
+import NormalPage from "./pages/NormalPage";
+import HardPage from "./pages/HardPage";
 
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
+  // 기본 난이도 'EASY'로 설정
+  const [isClick, setIsClick] = useState(0);
+  // 기본 페이지 'EasyPage'로 설정
+  const [currentPage, setCurrentPage] = useState(<EasyPage />);
 
-  const [isClick, setIsClick] = useState("");
+  useEffect(() => {
+    switch (isClick) {
+      case 0:
+        setCurrentPage(<EasyPage />);
+        break;
+
+      case 1:
+        setCurrentPage(<NormalPage />);
+        break;
+
+      case 2:
+        setCurrentPage(<HardPage />);
+        break;
+
+      default:
+        break;
+    }
+  }, [isClick]);
 
   return (
     <>
@@ -24,6 +48,8 @@ const Button = () => {
           );
         })}
       </LevelBtnContainer>
+
+      {currentPage}
     </>
   );
 };
@@ -68,6 +94,7 @@ const LevelBtnContainer = styled.div`
 
 const LevelButton = styled.button`
   margin: 0 1rem;
+  padding: 1rem 1.5rem;
   box-shadow: 0.3rem 0.3rem 0.3rem ${({ theme }) => theme.colors.purple};
 
   background-color: ${({ theme, isClick }) =>
@@ -77,5 +104,5 @@ const LevelButton = styled.button`
     isClick ? theme.colors.lightPink : theme.colors.purple};
 
   font-family: ${(props) => props.theme.font.fontFamily};
-  font-size: 1rem;
+  font-size: 1.3rem;
 `;
