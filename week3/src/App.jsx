@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, theme } from "./styles/theme";
+import theme from "./styles/theme";
+import { GlobalStyle } from "./styles/GlobalStyle";
 import Header from "./components/Header";
 import Button from "./components/Button";
 
