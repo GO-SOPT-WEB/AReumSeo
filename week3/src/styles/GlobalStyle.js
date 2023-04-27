@@ -16,8 +16,17 @@ font-style: normal;
 }
 
 body {
+    padding-bottom: 30rem;
     background-color: ${({ theme }) => theme.colors.yellow};
     font-family: 'UhBeeSe_hyun';
 }
-`;
 
+img {
+    width: 10rem;
+    height: 12rem;
+    border-radius: 2rem;
+    border-style: double;
+    border-width: 0.5rem;
+    border-color: ${({ theme }) => theme.colors.purple};
+}
+`;
