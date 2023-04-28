@@ -72,4 +72,3 @@ export const hardCardList = cardListbyLevel[2].imgList.concat(
   cardListbyLevel[2].imgList
 );
 
-// console.log(cardListbyLevel[0].imgList.concat(cardListbyLevel[0].imgList));
