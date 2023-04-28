@@ -8,7 +8,7 @@ import img_7 from "../assets/img_7.gif";
 import img_8 from "../assets/img_8.gif";
 import img_9 from "../assets/img_9.gif";
 
-export const cardImgList = [
+const cardImgList = [
   {
     name: img_1,
     alt: "첫 번째 카드",
@@ -46,3 +46,30 @@ export const cardImgList = [
     alt: "아홉 번째 카드",
   },
 ];
+
+const cardListbyLevel = [
+  {
+    level: "easy",
+    imgList: cardImgList.slice(0, 5),
+  },
+  {
+    level: "normal",
+    imgList: cardImgList.slice(0, 7),
+  },
+  {
+    level: "hard",
+    imgList: cardImgList,
+  },
+];
+
+export const easyCardList = cardListbyLevel[0].imgList.concat(
+  cardListbyLevel[0].imgList
+);
+export const normalCardList = cardListbyLevel[1].imgList.concat(
+  cardListbyLevel[1].imgList
+);
+export const hardCardList = cardListbyLevel[2].imgList.concat(
+  cardListbyLevel[2].imgList
+);
+
+// console.log(cardListbyLevel[0].imgList.concat(cardListbyLevel[0].imgList));
