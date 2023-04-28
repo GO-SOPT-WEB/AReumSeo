@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import EasyPage from "./pages/EasyPage";
-import NormalPage from "./pages/NormalPage";
-import HardPage from "./pages/HardPage";
+import { easyCardList } from "../constants/cardImgList";
+import { normalCardList } from "../constants/cardImgList";
+import { hardCardList } from "../constants/cardImgList";
+import CommonPage from "./CommonPage";
 
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
   // 기본 난이도 'EASY'로 설정
   const [isClick, setIsClick] = useState(0);
-  // 기본 페이지 'EasyPage'로 설정
-  const [currentPage, setCurrentPage] = useState(<EasyPage />);
+  const [currentPage, setCurrentPage] = useState(<CommonPage />);
 
   useEffect(() => {
     switch (isClick) {
       case 0:
-        setCurrentPage(<EasyPage />);
+        setCurrentPage(<CommonPage cardList={easyCardList} />);
         break;
 
       case 1:
-        setCurrentPage(<NormalPage />);
+        setCurrentPage(<CommonPage cardList={normalCardList} />);
         break;
 
       case 2:
-        setCurrentPage(<HardPage />);
+        setCurrentPage(<CommonPage cardList={hardCardList} />);
         break;
 
       default:
@@ -59,14 +59,12 @@ export default Button;
 const ResetButton = styled.button`
   display: flex;
   justify-content: center;
-
   position: fixed;
   top: 2rem;
   right: 0;
   width: 7rem;
   margin: 1rem;
   padding: 1.5rem 1rem;
-
   border: 0;
   border-radius: 1rem;
   box-shadow: 0.3rem 0.3rem 0.3rem ${({ theme }) => theme.colors.lightGreen};
@@ -96,6 +94,8 @@ const LevelButton = styled.button`
   margin: 0 1rem;
   padding: 1rem 1.5rem;
   box-shadow: 0.3rem 0.3rem 0.3rem ${({ theme }) => theme.colors.purple};
+  border: 0;
+  border-radius: 1rem;
 
   background-color: ${({ theme, isClick }) =>
     isClick ? theme.colors.purple : theme.colors.lightPink};
