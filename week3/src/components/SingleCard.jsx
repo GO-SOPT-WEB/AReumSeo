@@ -1,0 +1,54 @@
+import cover from "../assets/cover.png";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
+const SingleCard = ({ handleChoice, data }) => {
+  const handleClick = () => {
+    handleChoice(data);
+  };
+  return (
+    <div className="card">
+      <CardFront>
+        <img src={data.name} alt="카드 앞면" />
+      </CardFront>
+      <CardBack>
+        <img src={cover} alt="카드 뒷면" onClick={handleClick} />
+      </CardBack>
+    </div>
+  );
+};
+
+// js는 동적으로 데이터 타입이 동적으로 지정되기 때문에, 엉뚱한 데이터가 들어오지 않도록 prop type 지정해줌
+SingleCard.propTypes = {
+  handleChoice: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+export default SingleCard;
+
+const CardFront = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 15rem;
+  height: 17rem;
+  margin: 1rem;
+  border-radius: 2rem;
+  background-color: ${({ theme }) => theme.colors.lightPink};
+  box-shadow: 1rem 1rem 1rem ${({ theme }) => theme.colors.pink};
+`;
+
+const CardBack = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 15rem;
+  height: 17rem;
+  margin: 1rem;
+  border-radius: 2rem;
+
+  background-color: ${({ theme }) => theme.colors.purple};
+  box-shadow: 1rem 1rem 1rem ${({ theme }) => theme.colors.pink};
+`;
