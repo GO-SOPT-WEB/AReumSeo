@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import SingleCard from "./SingleCard";
 
 const CommonPage = (cardList) => {
-  const copiedCardList = Object.keys(cardList)
-    .map((item) => cardList[item])
-    .flat();
-  copiedCardList.sort(() => Math.random() - 0.5);
+  // useMemo() 활용하여 cardList가 변경되지 않을 경우, 이전 값을 재사용하도록 구현
+  const copiedCardList = useMemo(() => {
+    const copied = Object.keys(cardList)
+      .map((item) => cardList[item])
+      .flat();
+    return copied.sort(() => Math.random() - 0.5);
+  }, [cardList]);
 
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
