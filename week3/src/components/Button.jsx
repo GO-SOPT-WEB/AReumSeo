@@ -69,7 +69,7 @@ export default Button;
 const ResetButton = styled.button`
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   top: 2rem;
   right: 0;
   width: 7rem;
