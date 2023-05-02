@@ -70,6 +70,7 @@ const ResetButton = styled.button`
   display: flex;
   justify-content: center;
   position: absolute;
+  z-index: 1;
   top: 2rem;
   right: 0;
   width: 7rem;
