@@ -41,12 +41,9 @@ const CommonPage = (cardList) => {
         setChoiceOne((choiceOne.matched = true));
         setChoiceTwo((choiceTwo.matched = true));
 
-        console.log(copiedCardList);
         resetTurn();
       } else {
-        console.log("fail");
-        console.log(copiedCardList);
-        resetTurn();
+        setTimeout(() => resetTurn(), 500);
       }
     }
   }, [choiceOne, choiceTwo]);
