@@ -8,9 +8,14 @@ const CommonPage = (cardList) => {
     const copied = Object.keys(cardList)
       .map((item) => cardList[item])
       .flat();
+
+    // 카드 선택을 하다가 중간에 reset 버튼이나 레벨 선택을 다시 하면 이전에 저장되어 있던 카드 선택 정보 모두 삭제
+    copied.map((it) => (it.matched = false));
+
     return copied.sort(() => Math.random() - 0.5);
   }, [cardList]);
 
+  const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
 
@@ -26,17 +31,37 @@ const CommonPage = (cardList) => {
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       if (choiceOne.name === choiceTwo.name) {
-        console.log("those cards match");
+        setChoiceOne((choiceOne.matched = true));
+        setChoiceTwo((choiceTwo.matched = true));
+
+        console.log(copiedCardList);
+        resetTurn();
       } else {
         console.log("fail");
+        console.log(copiedCardList);
+        resetTurn();
       }
     }
   }, [choiceOne, choiceTwo]);
 
+  // 카드가 짝을 찾은 경우 실행
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prev) => prev + 1);
+  };
+
   return (
     <CardContainer>
       {copiedCardList.map((data, idx) => {
-        return <SingleCard key={idx} data={data} handleChoice={handleChoice} />;
+        return (
+          <SingleCard
+            key={idx}
+            data={data}
+            handleChoice={handleChoice}
+            flipped={data === choiceOne || data === choiceTwo || data.matched}
+          />
+        );
       })}
     </CardContainer>
   );

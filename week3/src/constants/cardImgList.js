@@ -12,38 +12,47 @@ const cardImgList = [
   {
     name: img_1,
     alt: "첫 번째 카드",
+    matched: false,
   },
   {
     name: img_2,
     alt: "두 번째 카드",
+    matched: false,
   },
   {
     name: img_3,
     alt: "세 번째 카드",
+    matched: false,
   },
   {
     name: img_4,
     alt: "네 번째 카드",
+    matched: false,
   },
   {
     name: img_5,
     alt: "다섯 번째 카드",
+    matched: false,
   },
   {
     name: img_6,
     alt: "여섯 번째 카드",
+    matched: false,
   },
   {
     name: img_7,
     alt: "일곱 번째 카드",
+    matched: false,
   },
   {
     name: img_8,
     alt: "여덟 번째 카드",
+    matched: false,
   },
   {
     name: img_9,
     alt: "아홉 번째 카드",
+    matched: false,
   },
 ];
 
@@ -71,4 +80,3 @@ export const normalCardList = cardListbyLevel[1].imgList.concat(
 export const hardCardList = cardListbyLevel[2].imgList.concat(
   cardListbyLevel[2].imgList
 );
-
