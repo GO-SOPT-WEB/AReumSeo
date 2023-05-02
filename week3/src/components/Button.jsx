@@ -10,6 +10,7 @@ const Button = () => {
   // 기본 난이도 'EASY'로 설정
   const [isClick, setIsClick] = useState(0);
   const [currentPage, setCurrentPage] = useState(<CommonPage />);
+  const [shuffle, setShuffle] = useState(0);
 
   useEffect(() => {
     switch (isClick) {
@@ -28,11 +29,18 @@ const Button = () => {
       default:
         break;
     }
-  }, [isClick]);
+  }, [isClick, shuffle]);
 
   return (
     <>
-      <ResetButton type="button">RESET</ResetButton>
+      <ResetButton
+        type="button"
+        onClick={() => {
+          setShuffle((prev) => prev + 1);
+        }}
+      >
+        RESET
+      </ResetButton>
 
       <LevelBtnContainer>
         {levelData.map((data, idx) => {
@@ -41,7 +49,9 @@ const Button = () => {
               key={idx}
               type="button"
               isClick={idx === isClick}
-              onClick={() => setIsClick(idx)}
+              onClick={() => {
+                setIsClick(idx);
+              }}
             >
               {data}
             </LevelButton>
