@@ -5,9 +5,16 @@ import SingleCard from "./SingleCard";
 const CommonPage = (cardList) => {
   // useMemo() 활용하여 cardList가 변경되지 않을 경우, 이전 값을 재사용하도록 구현
   const copiedCardList = useMemo(() => {
-    const copied = Object.keys(cardList)
-      .map((item) => cardList[item])
-      .flat();
+    // JSON.parse(JSON.stringify(obj)): 깊은 복사가 가능하게 하여 한쪽을 수정하여도 다른 쪽 객체가 똑같이 수정되지 않도록 해줌
+    const copied = JSON.parse(
+      JSON.stringify(
+        // Object.keys(): 객체를 문자열 배열로 변환
+        Object.keys(cardList)
+          .map((item) => cardList[item])
+          // flat(): 하나의 배열로 만들고자 사용
+          .flat()
+      )
+    );
 
     // 카드 선택을 하다가 중간에 reset 버튼이나 레벨 선택을 다시 하면 이전에 저장되어 있던 카드 선택 정보 모두 삭제
     copied.map((it) => (it.matched = false));
