@@ -1,13 +1,20 @@
 // styled API를 사용하여 스타일링
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import "./SingleCard.css";
 
 const Header = ({ counter, length }) => {
+  const [animate, setAnimate] = useState(false);
+  useEffect(() => {
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 1000);
+  }, [counter]);
   return (
     <>
       <ChokiPokiHeader>
         <strong> 💗 쵸키랑 푸키를 맞춰주세요! 💗</strong>
-        <AnswerCounter>
+        <AnswerCounter className={animate ? "scale" : ""}>
           <strong>
             {counter} / {length}
           </strong>
@@ -44,9 +51,20 @@ const ChokiPokiHeader = styled.header`
   font-size: 2.2rem;
 `;
 
-const AnswerCounter = styled.p`
+const AnswerCounter = styled.h1`
   margin: 1.5rem 0rem;
   text-align: center;
 
   color: ${({ theme }) => theme.colors.lightPink};
+
+  font-size: 2rem;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc,
+    0 10px 10px rgba(0, 0, 0, 0.4);
+
+  &.scale {
+    transform: scale(1.5, 1.5);
+    color: ${({ theme }) => theme.colors.lightYellow};
+    text-shadow: 0 1px 0 #fec086, 0 2px 0 #fec086, 0 3px 0 #fec086,
+      0 10px 10px rgba(0, 0, 0, 0.4);
+  }
 `;
