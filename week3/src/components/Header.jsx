@@ -1,17 +1,25 @@
 // styled API를 사용하여 스타일링
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const Header = () => {
+const Header = ({ counter, length }) => {
   return (
     <>
       <ChokiPokiHeader>
         <strong> 💗 쵸키랑 푸키를 맞춰주세요! 💗</strong>
         <AnswerCounter>
-          <strong>0/5</strong>
+          <strong>
+            {counter} / {length}
+          </strong>
         </AnswerCounter>
       </ChokiPokiHeader>
     </>
   );
+};
+
+Header.propTypes = {
+  counter: PropTypes.number,
+  length: PropTypes.number,
 };
 
 export default Header;

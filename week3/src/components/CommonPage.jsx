@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState, useMemo } from "react";
 import SingleCard from "./SingleCard";
+import Header from "./Header";
 
 const CommonPage = (cardList) => {
   // useMemo() 활용하여 cardList가 변경되지 않을 경우, 이전 값을 재사용하도록 구현
@@ -22,13 +23,12 @@ const CommonPage = (cardList) => {
     return copied.sort(() => Math.random() - 0.5);
   }, [cardList]);
 
-  const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
 
-  const handleChoice = (card) => {
-    console.log("clicked!");
+  const [counter, setCounter] = useState(0);
 
+  const handleChoice = (card) => {
     // 값이 null이 아니면 이미 해당 값은 선택되어 있다는 것
     // choiceOne에 값이 할당되어 있다면 choiceTwo의 값을 업데이트
     // choiceOne에 값이 할당되어 있지 않다면 choiceOne의 값을 업데이트
@@ -40,7 +40,7 @@ const CommonPage = (cardList) => {
       if (choiceOne.name === choiceTwo.name) {
         setChoiceOne((choiceOne.matched = true));
         setChoiceTwo((choiceTwo.matched = true));
-
+        setCounter((prev) => prev + 1);
         resetTurn();
       } else {
         setTimeout(() => resetTurn(), 500);
@@ -48,26 +48,28 @@ const CommonPage = (cardList) => {
     }
   }, [choiceOne, choiceTwo]);
 
-  // 카드가 짝을 찾은 경우 실행
+  // 두 개의 카드가 선택된 후, 각 카드 정보 초기화
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
-    setTurns((prev) => prev + 1);
   };
 
   return (
-    <CardContainer>
-      {copiedCardList.map((data, idx) => {
-        return (
-          <SingleCard
-            key={idx}
-            data={data}
-            handleChoice={handleChoice}
-            flipped={data === choiceOne || data === choiceTwo || data.matched}
-          />
-        );
-      })}
-    </CardContainer>
+    <>
+      <Header counter={counter} length={copiedCardList.length / 2} />
+      <CardContainer>
+        {copiedCardList.map((data, idx) => {
+          return (
+            <SingleCard
+              key={idx}
+              data={data}
+              handleChoice={handleChoice}
+              flipped={data === choiceOne || data === choiceTwo || data.matched}
+            />
+          );
+        })}
+      </CardContainer>
+    </>
   );
 };
 
