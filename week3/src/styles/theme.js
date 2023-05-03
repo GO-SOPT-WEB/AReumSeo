@@ -12,6 +12,8 @@ const colors = {
   lightGreen: "#CCE2CB",
   green: "#8EB695",
   darkGreen: "#2D4849",
+  lightPink_modal: "#ffcad6",
+  darkPink_modal: "#d03c5a",
 };
 
 const font = {
