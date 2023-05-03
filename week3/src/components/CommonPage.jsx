@@ -4,8 +4,14 @@ import SingleCard from "./SingleCard";
 import Header from "./Header";
 
 const CommonPage = (cardList) => {
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
+
+  const [counter, setCounter] = useState(0);
+
   // useMemo() 활용하여 cardList가 변경되지 않을 경우, 이전 값을 재사용하도록 구현
   const copiedCardList = useMemo(() => {
+    setCounter(0);
     // JSON.parse(JSON.stringify(obj)): 깊은 복사가 가능하게 하여 한쪽을 수정하여도 다른 쪽 객체가 똑같이 수정되지 않도록 해줌
     const copied = JSON.parse(
       JSON.stringify(
@@ -22,11 +28,6 @@ const CommonPage = (cardList) => {
 
     return copied.sort(() => Math.random() - 0.5);
   }, [cardList]);
-
-  const [choiceOne, setChoiceOne] = useState(null);
-  const [choiceTwo, setChoiceTwo] = useState(null);
-
-  const [counter, setCounter] = useState(0);
 
   const handleChoice = (card) => {
     // 값이 null이 아니면 이미 해당 값은 선택되어 있다는 것
