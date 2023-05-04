@@ -56,27 +56,30 @@ const cardImgList = [
   },
 ];
 
-const cardListbyLevel = [
-  {
-    level: "easy",
-    imgList: cardImgList.slice(0, 5),
-  },
-  {
-    level: "normal",
-    imgList: cardImgList.slice(0, 7),
-  },
-  {
-    level: "hard",
-    imgList: cardImgList,
-  },
-];
+function mixEasyCardList() {
+  const mixedEasyCardList = cardImgList
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 5);
+  console.log(mixedEasyCardList.concat(mixedEasyCardList));
+  return mixedEasyCardList.concat(mixedEasyCardList);
+}
 
-export const easyCardList = cardListbyLevel[0].imgList.concat(
-  cardListbyLevel[0].imgList
-);
-export const normalCardList = cardListbyLevel[1].imgList.concat(
-  cardListbyLevel[1].imgList
-);
-export const hardCardList = cardListbyLevel[2].imgList.concat(
-  cardListbyLevel[2].imgList
-);
+function mixNormalCardList() {
+  const mixedNormalCardList = cardImgList
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 7);
+  console.log(mixedNormalCardList.concat(mixedNormalCardList));
+  return mixedNormalCardList.concat(mixedNormalCardList);
+}
+
+function mixHardCardList() {
+  const mixedHardCardList = cardImgList.sort(() => Math.random() - 0.5);
+  console.log(mixedHardCardList.concat(mixedHardCardList));
+  return mixedHardCardList.concat(mixedHardCardList);
+}
+
+export const easyCardList = mixEasyCardList();
+
+export const normalCardList = mixNormalCardList();
+
+export const hardCardList = mixHardCardList();
