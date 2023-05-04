@@ -10,13 +10,14 @@ const CommonPage = (cardList) => {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [counter, setCounter] = useState(0);
   const [modalOn, setModalOn] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const flippedCard = document.getElementsByClassName("flipped");
 
   // useMemo() 활용하여 cardList가 변경되지 않을 경우, 이전 값을 재사용하도록 구현
   const copiedCardList = useMemo(() => {
     setCounter(0);
-    // JSON.parse(JSON.stringify(obj)): 깊은 복사가 가능하게 하여 한쪽을 수정하여도 다른 쪽 객체가 똑같이 수정(참조)되지 않도록 해줌
+    // JSON.parse(JSON.stringify(obj)): 깊은 복사
     const copied = JSON.parse(
       JSON.stringify(
         // Object.keys(): 객체를 문자열 배열로 변환
@@ -39,6 +40,9 @@ const CommonPage = (cardList) => {
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
+      // 두 개의 카드가 같은지 확인하는 동안 다른 카드 선택 불가
+      setDisabled(true);
+
       if (choiceOne.name === choiceTwo.name) {
         setChoiceOne((choiceOne.matched = true));
         setChoiceTwo((choiceTwo.matched = true));
@@ -57,6 +61,9 @@ const CommonPage = (cardList) => {
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
+
+    // 검사가 끝나면 다른 카드 선택 가능
+    setDisabled(false);
   };
 
   return (
@@ -70,6 +77,7 @@ const CommonPage = (cardList) => {
               data={data}
               handleChoice={handleChoice}
               flipped={data === choiceOne || data === choiceTwo || data.matched}
+              disabled={disabled}
             />
           );
         })}
