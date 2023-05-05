@@ -101,5 +101,5 @@ const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 20rem;
+  margin: 20rem 7rem 0rem;
 `;

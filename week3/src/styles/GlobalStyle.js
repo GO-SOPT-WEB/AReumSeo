@@ -22,8 +22,8 @@ body {
 }
 
 img {
-    width: 10rem;
-    height: 12rem;
+    width: 8rem;
+    height: 10rem;
     border-radius: 2rem;
     border-style: double;
     border-width: 0.5rem;

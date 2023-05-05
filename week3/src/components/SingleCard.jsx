@@ -38,8 +38,8 @@ const CardFront = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 15rem;
-  height: 17rem;
+  width: 13rem;
+  height: 15rem;
   margin: 0rem 1rem;
   border-radius: 2rem;
   background-color: ${({ theme }) => theme.colors.lightPink};
@@ -51,8 +51,8 @@ const CardBack = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 15rem;
-  height: 17rem;
+  width: 13rem;
+  height: 15rem;
   margin: 1rem;
   border-radius: 2rem;
 
