@@ -60,7 +60,6 @@ function mixEasyCardList() {
   const mixedEasyCardList = cardImgList
     .sort(() => Math.random() - 0.5)
     .slice(0, 5);
-  console.log(mixedEasyCardList.concat(mixedEasyCardList));
   return mixedEasyCardList.concat(mixedEasyCardList);
 }
 
@@ -68,13 +67,11 @@ function mixNormalCardList() {
   const mixedNormalCardList = cardImgList
     .sort(() => Math.random() - 0.5)
     .slice(0, 7);
-  console.log(mixedNormalCardList.concat(mixedNormalCardList));
   return mixedNormalCardList.concat(mixedNormalCardList);
 }
 
 function mixHardCardList() {
   const mixedHardCardList = cardImgList.sort(() => Math.random() - 0.5);
-  console.log(mixedHardCardList.concat(mixedHardCardList));
   return mixedHardCardList.concat(mixedHardCardList);
 }
 
