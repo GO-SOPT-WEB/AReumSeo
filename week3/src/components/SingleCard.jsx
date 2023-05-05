@@ -3,9 +3,9 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import "./SingleCard.css";
 
-const SingleCard = ({ handleChoice, data, flipped, disalbed }) => {
+const SingleCard = ({ handleChoice, data, flipped, disabled }) => {
   const handleClick = () => {
-    if (!disalbed) {
+    if (!disabled) {
       handleChoice(data);
     }
   };
@@ -28,7 +28,7 @@ SingleCard.propTypes = {
   handleChoice: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   flipped: PropTypes.bool.isRequired,
-  disalbed: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default SingleCard;
