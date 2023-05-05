@@ -48,11 +48,12 @@ const CommonPage = (cardList) => {
         setChoiceTwo((choiceTwo.matched = true));
         setCounter((prev) => prev + 1);
         resetTurn();
+
         flippedCard.length === copiedCardList.length
           ? setModalOn(true)
           : setModalOn(false);
       } else {
-        setTimeout(() => resetTurn(), 500);
+        setTimeout(() => resetTurn(), 1000);
       }
     }
   }, [choiceOne, choiceTwo, flippedCard, copiedCardList]);
