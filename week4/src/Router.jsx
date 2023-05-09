@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import WeatherPage from "./pages/WeatherPage";
 import DetailCardPage from "./pages/DetailCardPage";
-import DetailDayWeather from "./components/DetailDayWeather";
-import DetailWeekWeather from "./components/DetailWeekWeather";
+import DetailDayInfo from "./components/DetailDayInfo";
+import DetailWeekInfo from "./components/DetailWeekInfo";
 
 const Router = () => {
   return (
@@ -10,10 +10,10 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<WeatherPage />} />
         <Route path="/day" element={<DetailCardPage />}>
-          <Route path=":cityId" element={<DetailDayWeather />} />
+          <Route path=":cityId" element={<DetailDayInfo />} />
         </Route>
         <Route path="/week" element={<DetailCardPage />}>
-          <Route path=":cityId" element={<DetailWeekWeather />} />
+          <Route path=":cityId" element={<DetailWeekInfo />} />
         </Route>
       </Routes>
     </BrowserRouter>
