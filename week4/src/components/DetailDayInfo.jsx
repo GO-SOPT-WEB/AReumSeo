@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import ImgCard from "./ImgCard";
 
 const DetailDayInfo = () => {
   const params = useParams();
   const { cityId } = params;
-
-  const [detailCard, setdetailCard] = useState();
+  const [detailCardList, setdetailCardList] = useState([]);
 
   const getDetailCardInfo = () => {
     fetch(
@@ -18,7 +19,7 @@ const DetailDayInfo = () => {
       })
       .then((data) => {
         if (data.cod === 200) {
-          setdetailCard(data);
+          setdetailCardList(data);
         }
       })
       .catch((err) => console.log(err));
@@ -27,6 +28,14 @@ const DetailDayInfo = () => {
   useEffect(() => {
     getDetailCardInfo();
   }, []);
+
+  return (
+    <CardListWrapper>
+      <ImgCard data={detailCardList} />
+    </CardListWrapper>
+  );
 };
 
 export default DetailDayInfo;
+
+const CardListWrapper = styled.section``;
