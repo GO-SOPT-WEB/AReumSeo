@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ImgCard from "./ImgCard";
+import styled from "styled-components";
 
 const DetailWeekInfo = () => {
   const params = useParams();
   const { cityId } = params;
 
-  const [detailCard, setdetailCard] = useState();
+  const [detailCardList, setdetailCardList] = useState([]);
 
   const getDetailCardInfo = () => {
     fetch(
@@ -18,7 +20,9 @@ const DetailWeekInfo = () => {
       })
       .then((data) => {
         if (data.cod === "200") {
-          setdetailCard(data);
+          setdetailCardList(
+            data.list.filter((it) => it.dt_txt.includes("21:00:00"))
+          );
         }
       })
       .catch((err) => console.log(err));
@@ -27,6 +31,15 @@ const DetailWeekInfo = () => {
   useEffect(() => {
     getDetailCardInfo();
   }, []);
+
+  return (
+    <CardListWrapper>
+      {detailCardList &&
+        detailCardList.map((data, idx) => <ImgCard key={idx} data={data} />)}
+    </CardListWrapper>
+  );
 };
 
 export default DetailWeekInfo;
+
+const CardListWrapper = styled.section``;
