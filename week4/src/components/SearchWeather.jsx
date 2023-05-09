@@ -1,10 +1,19 @@
 import styled from "styled-components";
 import { searchCriteria } from "../constants/searchCriteria";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchWeather = () => {
+  const [cityId, setcityId] = useState("");
+  const [selectedOption, setSelectedOption] = useState("day");
+
+  const navigate = useNavigate();
+
   return (
     <SearchHeader>
-      <SearchCriteriaSection>
+      <SearchCriteriaSection
+        onChange={(e) => setSelectedOption(e.target.value)}
+      >
         {searchCriteria.map((data, idx) => {
           return (
             <SearchCriteriaOption key={idx} value={data.id}>
@@ -14,9 +23,21 @@ const SearchWeather = () => {
         })}
       </SearchCriteriaSection>
 
-      <SearchInput placeholder="영어로 도시명 ex) seoul" />
+      <SearchInput
+        placeholder="영어로 도시명 ex) seoul"
+        onChange={(e) => {
+          setcityId(e.target.value);
+        }}
+      />
 
-      <SearchButton type="submit">날씨 검색</SearchButton>
+      <SearchButton
+        type="submit"
+        onClick={() => {
+          navigate(`/${selectedOption}/${cityId}`);
+        }}
+      >
+        날씨 검색
+      </SearchButton>
     </SearchHeader>
   );
 };
@@ -28,7 +49,9 @@ const SearchHeader = styled.div`
   margin: 7rem 0rem;
 `;
 
-const SearchCriteriaSection = styled.select`
+const SearchCriteriaSection = styled.select.attrs({
+  id: "searchSection",
+})`
   height: 3rem;
   margin-top: 0.6rem;
   padding: 0rem 0.5rem;
