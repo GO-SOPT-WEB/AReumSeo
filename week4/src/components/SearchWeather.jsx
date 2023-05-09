@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { searchCriteria } from "../constants/searchCriteria";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SearchWeather = () => {
@@ -8,6 +8,14 @@ const SearchWeather = () => {
   const [selectedOption, setSelectedOption] = useState("day");
 
   const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    return navigate(`/${selectedOption}/${cityId}`);
+  };
+
+  useEffect(() => {
+    handleNavigate();
+  }, [selectedOption]);
 
   return (
     <SearchHeader>
@@ -30,12 +38,7 @@ const SearchWeather = () => {
         }}
       />
 
-      <SearchButton
-        type="submit"
-        onClick={() => {
-          navigate(`/${selectedOption}/${cityId}`);
-        }}
-      >
+      <SearchButton type="submit" onClick={() => handleNavigate()}>
         날씨 검색
       </SearchButton>
     </SearchHeader>
