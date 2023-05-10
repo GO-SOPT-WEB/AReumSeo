@@ -8,12 +8,13 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<WeatherPage />} />
-        <Route path="/day" element={<DetailCardPage />}>
-          <Route path=":cityId" element={<DetailDayInfo />} />
-        </Route>
-        <Route path="/week" element={<DetailCardPage />}>
-          <Route path=":cityId" element={<DetailWeekInfo />} />
+        <Route path="/" element={<WeatherPage />}>
+          <Route path="/day" element={<DetailCardPage />}>
+            <Route path=":cityId" element={<DetailDayInfo />} />
+          </Route>
+          <Route path="/week" element={<DetailCardPage />}>
+            <Route path=":cityId" element={<DetailWeekInfo />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
