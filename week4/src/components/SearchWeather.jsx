@@ -10,7 +10,11 @@ const SearchWeather = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    return navigate(`/${selectedOption}/${cityId}`);
+    if (selectedOption === "day" && !cityId) {
+      return;
+    } else {
+      return navigate(`/${selectedOption}/${cityId}`);
+    }
   };
 
   useEffect(() => {
@@ -20,7 +24,9 @@ const SearchWeather = () => {
   return (
     <SearchHeader>
       <SearchCriteriaSection
-        onChange={(e) => setSelectedOption(e.target.value)}
+        onChange={(e) => {
+          setSelectedOption(e.target.value);
+        }}
       >
         {searchCriteria.map((data, idx) => {
           return (
@@ -75,6 +81,7 @@ const SearchInput = styled.input`
   width: 17rem;
   padding: 1.3rem 1rem;
   margin: 0rem 1.3rem;
+  text-align: center;
   border: 0;
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.colors.mint};
