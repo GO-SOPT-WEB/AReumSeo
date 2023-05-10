@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ImgCard from "./ImgCard";
 import styled from "styled-components";
+import ErrorPage from "./ErrorPage";
 
 const DetailWeekInfo = () => {
   const params = useParams();
@@ -34,8 +35,12 @@ const DetailWeekInfo = () => {
 
   return (
     <CardListWrapper>
-      {detailCardList &&
-        detailCardList.map((data, idx) => <ImgCard key={idx} data={data} />)}
+      {detailCardList.length !== 0 ? (
+        detailCardList &&
+        detailCardList.map((data, idx) => <ImgCard key={idx} data={data} />)
+      ) : (
+        <ErrorPage cityId={cityId} />
+      )}
     </CardListWrapper>
   );
 };
@@ -51,5 +56,5 @@ const CardListWrapper = styled.section`
 
   width: 100%;
   padding: 1rem;
-  margin-top: -5rem;
+  margin-top: -6rem;
 `;

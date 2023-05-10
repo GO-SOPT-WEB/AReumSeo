@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ImgCard from "./ImgCard";
+import ErrorPage from "./ErrorPage";
 
 const DetailDayInfo = () => {
   const params = useParams();
@@ -31,7 +32,11 @@ const DetailDayInfo = () => {
 
   return (
     <CardListWrapper>
-      <ImgCard data={detailCardList} cityId={cityId} />
+      {detailCardList.length !== 0 ? (
+        <ImgCard data={detailCardList} cityId={cityId} />
+      ) : (
+        <ErrorPage cityId={cityId} />
+      )}
     </CardListWrapper>
   );
 };
@@ -47,5 +52,5 @@ const CardListWrapper = styled.section`
 
   width: 100%;
   padding: 1rem;
-  margin-top: -5rem;
+  margin-top: -6rem;
 `;
