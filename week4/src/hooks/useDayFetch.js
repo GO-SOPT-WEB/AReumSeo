@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 const useDayFetch = (initialUrl) => {
   const [detailCardList, setdetailCardList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const getDetailCardInfo = () => {
     setIsLoading(true);
+    setIsError(false);
+
     fetch(initialUrl)
       .then((res) => {
         return res.json();
@@ -14,6 +17,9 @@ const useDayFetch = (initialUrl) => {
         if (data.cod === 200) {
           setdetailCardList(data);
           setTimeout(() => setIsLoading(false), 1000);
+          setIsError(false);
+        } else {
+          setIsError(true);
         }
       })
       .catch((err) => console.log(err));
@@ -23,7 +29,7 @@ const useDayFetch = (initialUrl) => {
     getDetailCardInfo();
   }, [initialUrl]);
 
-  return [detailCardList, isLoading];
+  return [detailCardList, isLoading, isError];
 };
 
 export default useDayFetch;

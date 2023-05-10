@@ -8,7 +8,7 @@ const DetailWeekInfo = () => {
   const params = useParams();
   const { cityId } = params;
 
-  const [detailCardList, isLoading] = useWeekFetch(
+  const [detailCardList, isLoading, isError] = useWeekFetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${cityId}&appid=${
       import.meta.env.VITE_APP_WEATHER
     }&units=metric`
@@ -16,10 +16,15 @@ const DetailWeekInfo = () => {
 
   return (
     <CardListWrapper>
-      {detailCardList.length !== 0 ? (
+      {detailCardList.length !== 0 && !isError ? (
         detailCardList &&
         detailCardList.map((data, idx) => (
-          <ImgCard key={idx} data={data} isLoading={isLoading} />
+          <ImgCard
+            key={idx}
+            data={data}
+            isLoading={isLoading}
+            isError={isError}
+          />
         ))
       ) : (
         <ErrorPage cityId={cityId} />

@@ -4,7 +4,7 @@ import default_Img from "../assets/default_Img.gif";
 import Skeleton from "./Skeleton";
 
 const ImgCard = (props) => {
-  const { data, isLoading } = props;
+  const { data, isLoading, isError } = props;
 
   const temp = data.main && data.main.temp;
   const feels_like = data.main && data.main.feels_like;
@@ -26,7 +26,7 @@ const ImgCard = (props) => {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && !isError ? (
         <Skeleton />
       ) : (
         <ImgWrapper>

@@ -8,7 +8,7 @@ const DetailDayInfo = () => {
   const params = useParams();
   const { cityId } = params;
 
-  const [detailCardList, isLoading] = useDayFetch(
+  const [detailCardList, isLoading, isError] = useDayFetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${cityId}&appid=${
       import.meta.env.VITE_APP_WEATHER
     }&units=metric`
@@ -16,7 +16,7 @@ const DetailDayInfo = () => {
 
   return (
     <CardListWrapper>
-      {detailCardList.length !== 0 ? (
+      {detailCardList.length !== 0 && !isError ? (
         <ImgCard data={detailCardList} cityId={cityId} isLoading={isLoading} />
       ) : (
         <ErrorPage cityId={cityId} />
