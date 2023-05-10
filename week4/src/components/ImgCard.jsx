@@ -1,5 +1,6 @@
 import { WEATHER_TYPE } from "../constants/weather";
 import styled from "styled-components";
+import default_Img from "../assets/default_Img.gif";
 
 const ImgCard = (props) => {
   const { data } = props;
@@ -13,12 +14,16 @@ const ImgCard = (props) => {
 
   const imgSrc = filteredDay && filteredDay[0] ? filteredDay[0].imgURL : "";
 
+  const onErrorImg = (e) => {
+    e.target.src = default_Img;
+  };
+
   return (
     <ImgWrapper>
       <ImgWrapperHeader>
         <strong>{data.dt_txt ? data.dt_txt.slice(5, 10) : data.name}</strong>
       </ImgWrapperHeader>
-      <img src={imgSrc} />
+      <img src={imgSrc} onError={onErrorImg} />
     </ImgWrapper>
   );
 };
