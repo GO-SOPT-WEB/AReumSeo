@@ -9,8 +9,10 @@ const DetailWeekInfo = () => {
   const { cityId } = params;
 
   const [detailCardList, setdetailCardList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getDetailCardInfo = () => {
+    setIsLoading(true);
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${cityId}&appid=${
         import.meta.env.VITE_APP_WEATHER
@@ -24,6 +26,7 @@ const DetailWeekInfo = () => {
           setdetailCardList(
             data.list.filter((it) => it.dt_txt.includes("21:00:00"))
           );
+          setTimeout(() => setIsLoading(false), 1000);
         }
       })
       .catch((err) => console.log(err));
@@ -37,7 +40,9 @@ const DetailWeekInfo = () => {
     <CardListWrapper>
       {detailCardList.length !== 0 ? (
         detailCardList &&
-        detailCardList.map((data, idx) => <ImgCard key={idx} data={data} />)
+        detailCardList.map((data, idx) => (
+          <ImgCard key={idx} data={data} isLoading={isLoading} />
+        ))
       ) : (
         <ErrorPage cityId={cityId} />
       )}

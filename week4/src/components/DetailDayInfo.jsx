@@ -7,9 +7,12 @@ import ErrorPage from "./ErrorPage";
 const DetailDayInfo = () => {
   const params = useParams();
   const { cityId } = params;
+
   const [detailCardList, setdetailCardList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getDetailCardInfo = () => {
+    setIsLoading(true);
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cityId}&appid=${
         import.meta.env.VITE_APP_WEATHER
@@ -21,6 +24,7 @@ const DetailDayInfo = () => {
       .then((data) => {
         if (data.cod === 200) {
           setdetailCardList(data);
+          setTimeout(() => setIsLoading(false), 1000);
         }
       })
       .catch((err) => console.log(err));
@@ -33,7 +37,7 @@ const DetailDayInfo = () => {
   return (
     <CardListWrapper>
       {detailCardList.length !== 0 ? (
-        <ImgCard data={detailCardList} cityId={cityId} />
+        <ImgCard data={detailCardList} cityId={cityId} isLoading={isLoading} />
       ) : (
         <ErrorPage cityId={cityId} />
       )}
