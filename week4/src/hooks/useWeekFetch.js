@@ -19,8 +19,7 @@ const useWeekFetch = (initialUrl) => {
           setTimeout(() => setIsLoading(false), 1000);
         }
       })
-      .catch((err) => console.log(err))
-      .finally(setIsLoading(false));
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
