@@ -52,9 +52,7 @@ const SearchHeader = styled.div`
   margin: 7rem 0rem;
 `;
 
-const SearchCriteriaSection = styled.select.attrs({
-  id: "searchSection",
-})`
+const SearchCriteriaSection = styled.select`
   height: 3rem;
   margin-top: 0.6rem;
   padding: 0rem 0.5rem;
