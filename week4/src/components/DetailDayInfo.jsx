@@ -16,7 +16,7 @@ const DetailDayInfo = () => {
 
   return (
     <CardListWrapper>
-      {detailCardList.length !== 0 && !isError ? (
+      {(detailCardList.length !== 0 && !isError) || !isError ? (
         <ImgCard data={detailCardList} cityId={cityId} isLoading={isLoading} />
       ) : (
         <ErrorPage cityId={cityId} />

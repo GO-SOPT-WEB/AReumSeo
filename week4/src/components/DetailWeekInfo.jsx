@@ -16,7 +16,7 @@ const DetailWeekInfo = () => {
 
   return (
     <CardListWrapper>
-      {detailCardList.length !== 0 && !isError ? (
+      {(detailCardList.length !== 0 && !isError) || !isError ? (
         detailCardList &&
         detailCardList.map((data, idx) => (
           <ImgCard
