@@ -14,4 +14,13 @@ body {
     background-color: ${({ theme }) => theme.colors.lightYellow};
     font-family: 'Katuri';
 }
+
+img {
+    width: 10rem;
+    height: 10rem;
+    margin-top: -1rem;
+    border: 0;
+    border-radius: 1rem;
+    object-fit: contain;
+}
 `;
