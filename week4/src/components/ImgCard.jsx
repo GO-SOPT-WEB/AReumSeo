@@ -1,9 +1,10 @@
 import { WEATHER_TYPE } from "../constants/weather";
 import styled from "styled-components";
 import default_Img from "../assets/default_Img.gif";
+import Skeleton from "./Skeleton";
 
 const ImgCard = (props) => {
-  const { data } = props;
+  const { data, isLoading } = props;
 
   const temp = data.main && data.main.temp;
   const feels_like = data.main && data.main.feels_like;
@@ -24,32 +25,40 @@ const ImgCard = (props) => {
   };
 
   return (
-    <ImgWrapper>
-      <ImgWrapperHeader>
-        <strong>{data.dt_txt ? data.dt_txt.slice(5, 10) : data.name}</strong>
-      </ImgWrapperHeader>
-      <img src={imgSrc} onError={onErrorImg} />
-      <WeatherInfoContainer>
-        <WeatherInfo>
-          <p>온도</p>
-          <p>{temp}</p>
-        </WeatherInfo>
-        <WeatherInfo>
-          <p>체감 온도</p>
-          <p>{feels_like}</p>
-        </WeatherInfo>
-        <WeatherInfo>
-          <p>최저/최고</p>
-          <p>
-            {minTemp}/{maxTemp}
-          </p>
-        </WeatherInfo>
-        <WeatherInfo>
-          <p>구름</p>
-          <p>{clouds}%</p>
-        </WeatherInfo>
-      </WeatherInfoContainer>
-    </ImgWrapper>
+    <>
+      {isLoading ? (
+        <Skeleton />
+      ) : (
+        <ImgWrapper>
+          <ImgWrapperHeader>
+            <strong>
+              {data.dt_txt ? data.dt_txt.slice(5, 10) : data.name}
+            </strong>
+          </ImgWrapperHeader>
+          <img src={imgSrc} onError={onErrorImg} />
+          <WeatherInfoContainer>
+            <WeatherInfo>
+              <p>온도</p>
+              <p>{temp}</p>
+            </WeatherInfo>
+            <WeatherInfo>
+              <p>체감 온도</p>
+              <p>{feels_like}</p>
+            </WeatherInfo>
+            <WeatherInfo>
+              <p>최저/최고</p>
+              <p>
+                {minTemp}/{maxTemp}
+              </p>
+            </WeatherInfo>
+            <WeatherInfo>
+              <p>구름</p>
+              <p>{clouds}%</p>
+            </WeatherInfo>
+          </WeatherInfoContainer>
+        </ImgWrapper>
+      )}
+    </>
   );
 };
 
@@ -62,7 +71,8 @@ const ImgWrapper = styled.article`
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-
+  width: 12rem;
+  height: 27.5rem;
   background-color: ${({ theme }) => theme.colors.lightGreen};
   border-radius: 1rem;
   box-shadow: 0.3rem 0.3rem 0.3rem ${({ theme }) => theme.colors.darkGreen};
