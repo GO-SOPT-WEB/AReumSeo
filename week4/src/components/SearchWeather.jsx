@@ -17,6 +17,12 @@ const SearchWeather = () => {
     }
   };
 
+  const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleNavigate();
+    }
+  };
+
   useEffect(() => {
     handleNavigate();
   }, [selectedOption]);
@@ -42,6 +48,7 @@ const SearchWeather = () => {
         onChange={(e) => {
           setcityId(e.target.value);
         }}
+        onKeyPress={(e) => handleOnKeyPress(e)}
       />
 
       <SearchButton type="submit" onClick={() => handleNavigate()}>
