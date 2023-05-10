@@ -27,15 +27,25 @@ const DetailDayInfo = () => {
 
   useEffect(() => {
     getDetailCardInfo();
-  }, []);
+  }, [cityId]);
 
   return (
     <CardListWrapper>
-      <ImgCard data={detailCardList} />
+      <ImgCard data={detailCardList} cityId={cityId} />
     </CardListWrapper>
   );
 };
 
 export default DetailDayInfo;
 
-const CardListWrapper = styled.section``;
+const CardListWrapper = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  width: 100%;
+  padding: 1rem;
+  margin-top: -5rem;
+`;

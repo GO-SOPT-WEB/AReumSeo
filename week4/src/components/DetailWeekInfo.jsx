@@ -30,7 +30,7 @@ const DetailWeekInfo = () => {
 
   useEffect(() => {
     getDetailCardInfo();
-  }, []);
+  }, [cityId]);
 
   return (
     <CardListWrapper>
@@ -42,4 +42,14 @@ const DetailWeekInfo = () => {
 
 export default DetailWeekInfo;
 
-const CardListWrapper = styled.section``;
+const CardListWrapper = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  width: 100%;
+  padding: 1rem;
+  margin-top: -5rem;
+`;
