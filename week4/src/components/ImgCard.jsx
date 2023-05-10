@@ -1,13 +1,24 @@
+import { WEATHER_TYPE } from "../constants/weather";
 import styled from "styled-components";
 
 const ImgCard = (props) => {
   const { data } = props;
+  const weatherToday = JSON.stringify(
+    data.weather && data.weather[0].description
+  );
+
+  const filteredDay = WEATHER_TYPE.filter(
+    (it) => JSON.stringify(it.description) === weatherToday
+  );
+
+  const imgSrc = filteredDay && filteredDay[0] ? filteredDay[0].imgURL : "";
 
   return (
     <ImgWrapper>
       <ImgWrapperHeader>
         <strong>{data.dt_txt ? data.dt_txt.slice(5, 10) : data.name}</strong>
       </ImgWrapperHeader>
+      <img src={imgSrc} />
     </ImgWrapper>
   );
 };
