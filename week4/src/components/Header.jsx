@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <WeatherHeader>
-      <strong>🌞알미의 날씨 예보🌞</strong>
+      <strong>🌞알미의 기상 예보🌞</strong>
     </WeatherHeader>
   );
 };
