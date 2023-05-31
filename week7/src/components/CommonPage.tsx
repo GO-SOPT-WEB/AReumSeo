@@ -5,15 +5,23 @@ import Header from "./Header";
 import Modal from "./Modal";
 import ModalPortal from "./ModalPortal";
 
+export interface cardImgListProps {
+  name?: string;
+  alt?: string;
+  matched: boolean;
+}
+
 export interface CommonPageProps {
-  cardList: Array<object>;
+  cardList: cardImgListProps[];
 }
 
 const CommonPage = (props: CommonPageProps) => {
   const { cardList } = props;
 
-  const [choiceOne, setChoiceOne] = useState<any>(null);
-  const [choiceTwo, setChoiceTwo] = useState<any>(null);
+  // console.log(cardList);
+
+  const [choiceOne, setChoiceOne] = useState<cardImgListProps | null>(null);
+  const [choiceTwo, setChoiceTwo] = useState<cardImgListProps | null>(null);
   const [counter, setCounter] = useState<number>(0);
   const [modalOn, setModalOn] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
@@ -34,13 +42,13 @@ const CommonPage = (props: CommonPageProps) => {
       )
     );
     // 카드 선택을 하다가 중간에 reset 버튼이나 레벨 선택을 다시 하면 이전에 저장되어 있던 카드 선택 정보 모두 삭제
-    copied.map((it: any) => (it.matched = false));
+    copied.map((it: cardImgListProps) => (it.matched = false));
 
     return copied.sort(() => Math.random() - 0.5);
   }, [cardList]);
 
   // 값이 null이 아니면 이미 해당 값은 선택되어 있다는 것
-  const handleChoice = (card: any) => {
+  const handleChoice = (card: cardImgListProps) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
@@ -77,7 +85,7 @@ const CommonPage = (props: CommonPageProps) => {
     <>
       <Header counter={counter} length={copiedCardList.length / 2} />
       <CardContainer>
-        {copiedCardList.map((data: any, idx: number) => {
+        {copiedCardList.map((data: cardImgListProps, idx: number) => {
           return (
             <SingleCard
               key={idx}
