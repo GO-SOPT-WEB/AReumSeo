@@ -1,10 +1,15 @@
 // styled API를 사용하여 스타일링
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./SingleCard.css";
 
-const Header = ({ counter, length }) => {
+export interface HeaderProps {
+  counter: number;
+  length: number;
+}
+
+const Header = (props: HeaderProps) => {
+  const { counter, length } = props;
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
     if (counter != 0) {
@@ -25,13 +30,6 @@ const Header = ({ counter, length }) => {
     </>
   );
 };
-
-Header.propTypes = {
-  counter: PropTypes.number,
-  length: PropTypes.number,
-};
-
-export default Header;
 
 // tagged template literal 을 사용
 // Components 이름을 대문자로 선언
@@ -70,3 +68,5 @@ const AnswerCounter = styled.h1`
       0 10px 10px rgba(0, 0, 0, 0.4);
   }
 `;
+
+export default Header;
