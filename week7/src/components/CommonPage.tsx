@@ -5,12 +5,18 @@ import Header from "./Header";
 import Modal from "./Modal";
 import ModalPortal from "./ModalPortal";
 
-const CommonPage = (cardList) => {
-  const [choiceOne, setChoiceOne] = useState(null);
-  const [choiceTwo, setChoiceTwo] = useState(null);
-  const [counter, setCounter] = useState(0);
-  const [modalOn, setModalOn] = useState(false);
-  const [disabled, setDisabled] = useState(false);
+export interface CommonPageProps {
+  cardList: Array<object>;
+}
+
+const CommonPage = (props: CommonPageProps) => {
+  const { cardList } = props;
+
+  const [choiceOne, setChoiceOne] = useState<any>(null);
+  const [choiceTwo, setChoiceTwo] = useState<any>(null);
+  const [counter, setCounter] = useState<number>(0);
+  const [modalOn, setModalOn] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const flippedCard = document.getElementsByClassName("flipped");
 
@@ -21,20 +27,20 @@ const CommonPage = (cardList) => {
     const copied = JSON.parse(
       JSON.stringify(
         // Object.keys(): 객체를 문자열 배열로 변환
-        Object.keys(cardList)
+        (Object.keys(cardList) as Array<keyof typeof cardList>)
           .map((item) => cardList[item])
           // flat(): 하나의 배열로 만들고자 사용
           .flat()
       )
-    );
+    ) as number[];
     // 카드 선택을 하다가 중간에 reset 버튼이나 레벨 선택을 다시 하면 이전에 저장되어 있던 카드 선택 정보 모두 삭제
-    copied.map((it) => (it.matched = false));
+    copied.map((it: any) => (it.matched = false));
 
     return copied.sort(() => Math.random() - 0.5);
   }, [cardList]);
 
   // 값이 null이 아니면 이미 해당 값은 선택되어 있다는 것
-  const handleChoice = (card) => {
+  const handleChoice = (card: any) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
@@ -71,7 +77,7 @@ const CommonPage = (cardList) => {
     <>
       <Header counter={counter} length={copiedCardList.length / 2} />
       <CardContainer>
-        {copiedCardList.map((data, idx) => {
+        {copiedCardList.map((data: any, idx: number) => {
           return (
             <SingleCard
               key={idx}
