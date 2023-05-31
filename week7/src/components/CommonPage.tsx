@@ -58,8 +58,8 @@ const CommonPage = (props: CommonPageProps) => {
       setDisabled(true);
 
       if (choiceOne.name === choiceTwo.name) {
-        setChoiceOne((choiceOne.matched = true));
-        setChoiceTwo((choiceTwo.matched = true));
+        choiceOne.matched = true;
+        choiceTwo.matched = true;
         setCounter((prev) => prev + 1);
         resetTurn();
 
