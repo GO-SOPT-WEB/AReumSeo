@@ -7,15 +7,14 @@ import CommonPage from "./CommonPage";
 
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
-  // 기본 난이도 'EASY'로 설정
-  const [isClick, setIsClick] = useState<number>(0);
+  const [level, setLevel] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<object>(
     <CommonPage cardList={easyCardList} />
   );
   const [shuffle, setShuffle] = useState<number>(0);
 
   useEffect(() => {
-    switch (isClick) {
+    switch (level) {
       case 0:
         setCurrentPage(<CommonPage cardList={easyCardList} />);
         break;
@@ -31,7 +30,7 @@ const Button = () => {
       default:
         break;
     }
-  }, [isClick, shuffle]);
+  }, [level, shuffle]);
 
   return (
     <>
@@ -50,9 +49,9 @@ const Button = () => {
             <LevelButton
               key={idx}
               type="button"
-              isClicked={idx === isClick}
+              isClicked={idx === level}
               onClick={() => {
-                setIsClick(idx);
+                setLevel(idx);
               }}
             >
               {data}
