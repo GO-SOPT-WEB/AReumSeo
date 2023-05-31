@@ -32,7 +32,7 @@ const CommonPage = (props: CommonPageProps) => {
           // flat(): 하나의 배열로 만들고자 사용
           .flat()
       )
-    ) as number[];
+    );
     // 카드 선택을 하다가 중간에 reset 버튼이나 레벨 선택을 다시 하면 이전에 저장되어 있던 카드 선택 정보 모두 삭제
     copied.map((it: any) => (it.matched = false));
 
