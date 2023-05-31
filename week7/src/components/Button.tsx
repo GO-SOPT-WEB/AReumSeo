@@ -9,7 +9,9 @@ const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
   // 기본 난이도 'EASY'로 설정
   const [isClick, setIsClick] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<object>(<CommonPage />);
+  const [currentPage, setCurrentPage] = useState<object>(
+    <CommonPage cardList={easyCardList} />
+  );
   const [shuffle, setShuffle] = useState<number>(0);
 
   useEffect(() => {
