@@ -1,4 +1,4 @@
-import cover from "../assets/cover.png";
+import cover from "../assets/image/cover.png";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import "./SingleCard.css";

@@ -1,12 +1,12 @@
-import img_1 from "../assets/img_1.gif";
-import img_2 from "../assets/img_2.gif";
-import img_3 from "../assets/img_3.gif";
-import img_4 from "../assets/img_4.gif";
-import img_5 from "../assets/img_5.gif";
-import img_6 from "../assets/img_6.gif";
-import img_7 from "../assets/img_7.gif";
-import img_8 from "../assets/img_8.gif";
-import img_9 from "../assets/img_9.gif";
+import img_1 from "../assets/image/img_1.gif";
+import img_2 from "../assets/image/img_2.gif";
+import img_3 from "../assets/image/img_3.gif";
+import img_4 from "../assets/image/img_4.gif";
+import img_5 from "../assets/image/img_5.gif";
+import img_6 from "../assets/image/img_6.gif";
+import img_7 from "../assets/image/img_7.gif";
+import img_8 from "../assets/image/img_8.gif";
+import img_9 from "../assets/image/img_9.gif";
 
 const cardImgList = [
   {
