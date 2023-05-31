@@ -19,7 +19,7 @@ declare module "styled-components" {
       lightPink_modal: string;
       darkPink_modal: string;
     };
-    fonts: {
+    font: {
       fontFamily: string;
     };
   }

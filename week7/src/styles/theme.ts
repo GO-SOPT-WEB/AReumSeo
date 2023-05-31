@@ -1,3 +1,5 @@
+import { DefaultTheme } from "styled-components";
+
 const colors = {
   white: "#FFFFF0",
   lightPink: "#FEE1E8",
@@ -20,8 +22,9 @@ const font = {
   fontFamily: "LOTTERIACHAB",
 };
 
-const theme = {
+const theme: DefaultTheme = {
   colors,
   font,
 };
+
 export default theme;
