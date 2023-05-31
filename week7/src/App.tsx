@@ -1,15 +1,12 @@
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, DefaultTheme } from "styled-components";
 import theme from "./styles/theme";
 import { GlobalStyle } from "./styles/GlobalStyle";
-import Header from "./components/Header";
-import Button from "./components/Button";
-
+import Router from "./Router";
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme as DefaultTheme}>
       <GlobalStyle />
-      <Header />
-      <Button />
+      <Router />
     </ThemeProvider>
   );
 }
