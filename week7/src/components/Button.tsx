@@ -8,9 +8,9 @@ import CommonPage from "./CommonPage";
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
   // 기본 난이도 'EASY'로 설정
-  const [isClick, setIsClick] = useState(0);
-  const [currentPage, setCurrentPage] = useState(<CommonPage />);
-  const [shuffle, setShuffle] = useState(0);
+  const [isClick, setIsClick] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<object>(<CommonPage />);
+  const [shuffle, setShuffle] = useState<number>(0);
 
   useEffect(() => {
     switch (isClick) {
@@ -48,7 +48,7 @@ const Button = () => {
             <LevelButton
               key={idx}
               type="button"
-              isClick={idx === isClick}
+              isClicked={idx === isClick}
               onClick={() => {
                 setIsClick(idx);
               }}
@@ -63,8 +63,6 @@ const Button = () => {
     </>
   );
 };
-
-export default Button;
 
 const ResetButton = styled.button`
   display: flex;
@@ -101,19 +99,21 @@ const LevelBtnContainer = styled.div`
   right: 0;
 `;
 
-const LevelButton = styled.button`
+const LevelButton = styled.button<{ isClicked: boolean }>`
   margin: 0 1rem;
   padding: 1rem 1.5rem;
   box-shadow: 0.3rem 0.3rem 0.3rem ${({ theme }) => theme.colors.purple};
   border: 0;
   border-radius: 1rem;
 
-  background-color: ${({ theme, isClick }) =>
-    isClick ? theme.colors.purple : theme.colors.lightPink};
+  background-color: ${({ theme, isClicked }) =>
+    isClicked ? theme.colors.purple : theme.colors.lightPink};
 
-  color: ${({ theme, isClick }) =>
-    isClick ? theme.colors.lightPink : theme.colors.purple};
+  color: ${({ theme, isClicked }) =>
+    isClicked ? theme.colors.lightPink : theme.colors.purple};
 
   font-family: ${(props) => props.theme.font.fontFamily};
   font-size: 1.3rem;
 `;
+
+export default Button;
