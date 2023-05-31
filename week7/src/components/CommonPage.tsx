@@ -99,8 +99,6 @@ const CommonPage = (props: CommonPageProps) => {
   );
 };
 
-export default CommonPage;
-
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -109,3 +107,5 @@ const CardContainer = styled.div`
 
   margin: 20rem 7rem 0rem;
 `;
+
+export default CommonPage;
