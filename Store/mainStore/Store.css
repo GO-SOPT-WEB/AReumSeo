@@ -1,0 +1,387 @@
+@font-face {
+  font-family: "Ansungtangmyun-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-Bold.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 85px;
+  background-color: #f9eeed;
+  font-family: "Ansungtangmyun-Bold";
+  font-size: 20px;
+}
+
+/* header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffa4a0;
+  color: ivory;
+  height: 85px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+header h1 {
+  margin: 15px 0 0 20px;
+}
+
+#icon {
+  font-size: 30px;
+  margin-top: 25px;
+  margin-right: 20px;
+  position: relative;
+  z-index: 3;
+  color: #edf3c3;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.menuBar {
+  display: none;
+  color: #ffa4a0;
+  font-size: 20px;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+#icon:hover ~ .menuBar,
+.menuBar:hover {
+  width: 250px;
+  height: 100vh;
+  margin: 0;
+  background-color: #edf3c3;
+  display: block;
+}
+
+.menuBar li {
+  margin-top: 20px;
+}
+
+.menuBar li:hover {
+  color: #acbd98;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* nav */
+
+nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 15px;
+  top: 95px;
+  height: 250px;
+  width: 200px;
+  border-radius: 30px;
+  background-color: #bdd1a6;
+}
+
+nav .title {
+  padding-left: 20px;
+  margin-bottom: -10px;
+  color: ivory;
+}
+
+nav .list {
+  margin-left: -30px;
+  margin-right: 10px;
+}
+
+.list li {
+  background-color: #fdf291;
+  color: #666666;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.list li:hover {
+  background-color: #94baf3;
+  opacity: 0.8;
+  color: ivory;
+}
+
+/* category */
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  left: 210px;
+  right: 0;
+}
+
+.category article {
+  display: flex;
+  border-radius: 30px;
+  font-size: 17px;
+  color: #666666;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
+  padding: 0px 15px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+
+.category button {
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: #ffa4a0;
+  color: #666666;
+}
+
+/* card */
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 210px;
+  margin-top: 75px;
+  margin-bottom: 50px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.card article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+  border-radius: 20px;
+  background-color: white;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 2px 2px rgb(248, 187, 167);
+
+  animation: fadeIn 1.5s;
+}
+
+.name {
+  margin-bottom: -10px;
+  margin-top: 30px;
+}
+
+.card article ul {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 9rem;
+  height: 0.1rem;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.card article ul li {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  gap: 10px;
+  font-size: 15px;
+  color: #666666;
+}
+
+.card article button {
+  background-color: #fdf291;
+  border-color: #666666;
+  border-radius: 20px;
+  padding: 0;
+  margin-right: -155px;
+  margin-top: -23px;
+}
+
+.card article div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  max-width: 185px;
+  background-color: ivory;
+  color: #666666;
+  text-align: center;
+  border-radius: 20px;
+  padding: 15px;
+  z-index: 1;
+  line-height: 3px;
+  font-size: 15px;
+  box-shadow: 1px 1px 1px 1px #bdd1a6;
+}
+
+.card div button {
+  border-radius: 30px;
+  background-color: #bdd1a6;
+  color: #666666;
+  padding: 0px 3px;
+  margin: auto;
+  margin-left: 5px;
+}
+
+img {
+  width: 140px;
+  height: 150px;
+  min-height: 140px;
+  max-width: 150px;
+  margin-top: 5px;
+  object-fit: contain;
+}
+
+.heart {
+  position: relative;
+  left: 80px;
+  color: rgb(248, 187, 167);
+  cursor: pointer;
+}
+
+@media (max-width: 872px) {
+  .cardArticle {
+    width: 400px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .cardArticle {
+    width: 330px;
+    margin-right: 0;
+  }
+
+  .heart {
+    left: 70px;
+  }
+}
+
+@media (max-width: 610px) {
+  .cardArticle {
+    width: 270px;
+    margin-right: 0;
+  }
+
+  .heart {
+    left: 60px;
+  }
+}
+
+@media (max-width: 550px) {
+  .cardArticle {
+    width: 225px;
+    margin-right: 0;
+  }
+}
+
+.heart:hover {
+  color: red;
+}
+
+/* addMenu */
+
+.addMenu {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  background-color: #feb3af;
+  border-radius: 30px;
+  margin-top: 30px;
+  padding: 30px 0px;
+}
+
+.addItems {
+  width: 100%;
+  background-color: #fdf8c7;
+  color: #fb8a84;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  padding: 10px 0px;
+}
+
+.addItems__menu,
+.addItems__hashtag,
+.addItems__img {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 20px 0px;
+}
+
+.addItems__menu input,
+.addItems__hashtag input {
+  font-family: "Ansungtangmyun-Bold";
+  color: #474747;
+  background-color: #eaffd4;
+  border-color: #a3b293;
+  border-radius: 10px;
+  padding: 5px 0px;
+  margin: 0px 0px 20px 20px;
+}
+
+.fileUpload,
+#previewImg {
+  font-family: "Ansungtangmyun-Bold";
+  color: #474747;
+}
+
+#previewImg {
+  width: fit-content;
+  height: fit-content;
+}
+
+.selectCategory {
+  display: flex;
+  margin: 0px 0px 30px 147px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 17px;
+  background-color: #ebf3fd;
+  font-family: "Ansungtangmyun-Bold";
+}
+
+.addItems__btn {
+  display: flex;
+  margin: 15px auto;
+  font-family: "Ansungtangmyun-Bold";
+  font-size: 20px;
+  background-color: #cee3b6;
+  border: none;
+  box-shadow: 2px 2px 2px 2px #a3b293;
+  border-radius: 30px;
+  padding: 10px;
+}
