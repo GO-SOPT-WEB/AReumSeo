@@ -4,26 +4,26 @@ import { useEffect, useState } from "react";
 import "./SingleCard.css";
 
 export interface HeaderProps {
-  counter: number;
+  score: number;
   length: number;
 }
 
 const Header = (props: HeaderProps) => {
-  const { counter, length } = props;
+  const { score, length } = props;
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
-    if (counter != 0) {
+    if (score !== 0) {
       setAnimate(true);
       setTimeout(() => setAnimate(false), 1000);
     }
-  }, [counter]);
+  }, [score]);
   return (
     <>
       <ChokiPokiHeader>
         <strong> 💗 쵸키랑 푸키를 맞춰주세요! 💗</strong>
         <AnswerCounter className={animate ? "scale" : ""}>
           <strong>
-            {counter} / {length}
+            {score} / {length}
           </strong>
         </AnswerCounter>
       </ChokiPokiHeader>

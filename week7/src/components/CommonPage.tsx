@@ -18,11 +18,9 @@ export interface CommonPageProps {
 const CommonPage = (props: CommonPageProps) => {
   const { cardList } = props;
 
-  // console.log(cardList);
-
   const [choiceOne, setChoiceOne] = useState<cardImgListProps | null>(null);
   const [choiceTwo, setChoiceTwo] = useState<cardImgListProps | null>(null);
-  const [counter, setCounter] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
   const [modalOn, setModalOn] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
 
@@ -30,7 +28,7 @@ const CommonPage = (props: CommonPageProps) => {
 
   // useMemo() 활용하여 cardList가 변경되지 않을 경우, 이전 값을 재사용하도록 구현
   const copiedCardList = useMemo(() => {
-    setCounter(0);
+    setScore(0);
     // JSON.parse(JSON.stringify(obj)): 깊은 복사
     const copied = JSON.parse(
       JSON.stringify(
@@ -60,7 +58,7 @@ const CommonPage = (props: CommonPageProps) => {
       if (choiceOne.name === choiceTwo.name) {
         choiceOne.matched = true;
         choiceTwo.matched = true;
-        setCounter((prev) => prev + 1);
+        setScore((prev) => prev + 1);
         resetTurn();
 
         flippedCard.length === copiedCardList.length
@@ -83,7 +81,7 @@ const CommonPage = (props: CommonPageProps) => {
 
   return (
     <>
-      <Header counter={counter} length={copiedCardList.length / 2} />
+      <Header score={score} length={copiedCardList.length / 2} />
       <CardContainer>
         {copiedCardList.map((data: cardImgListProps, idx: number) => {
           return (
