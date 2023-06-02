@@ -61,9 +61,7 @@ const CommonPage = (props: CommonPageProps) => {
         setScore((prev) => prev + 1);
         resetTurn();
 
-        flippedCard.length === copiedCardList.length
-          ? setModalOn(true)
-          : setModalOn(false);
+        setModalOn(flippedCard.length === copiedCardList.length);
       } else {
         setTimeout(() => resetTurn(), 1000);
       }
@@ -81,7 +79,7 @@ const CommonPage = (props: CommonPageProps) => {
 
   return (
     <>
-      <Header score={score} length={copiedCardList.length / 2} />
+      <Header score={score} totalScore={copiedCardList.length / 2} />
       <CardContainer>
         {copiedCardList.map((data: cardImgListProps, idx: number) => {
           return (
