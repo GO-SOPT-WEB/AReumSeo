@@ -20,6 +20,7 @@ const colors = {
 
 const font = {
   fontFamily: "LOTTERIACHAB",
+  fontFamily_modal: "UhBeeSe_hyun",
 };
 
 const theme: DefaultTheme = {

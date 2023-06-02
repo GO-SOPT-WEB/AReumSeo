@@ -48,15 +48,7 @@ const GoBackBtn = styled.button`
   background-color: ${({ theme }) => theme.colors.darkPink_modal};
   color: ${({ theme }) => theme.colors.white};
 
-  @font-face {
-    font-family: "UhBeeSe_hyun";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  font-family: "UhBeeSe_hyun";
+  font-family: ${({ theme }) => theme.font.fontFamily_modal};
   font-size: 1rem;
 `;
 

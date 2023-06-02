@@ -21,6 +21,7 @@ declare module "styled-components" {
     };
     font: {
       fontFamily: string;
+      fontFamily_modal: string;
     };
   }
 }
