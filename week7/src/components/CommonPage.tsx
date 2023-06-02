@@ -13,10 +13,11 @@ export interface cardImgListProps {
 
 export interface CommonPageProps {
   cardList: cardImgListProps[];
+  shuffle: number;
 }
 
 const CommonPage = (props: CommonPageProps) => {
-  const { cardList } = props;
+  const { cardList, shuffle } = props;
 
   const [choiceOne, setChoiceOne] = useState<cardImgListProps | null>(null);
   const [choiceTwo, setChoiceTwo] = useState<cardImgListProps | null>(null);
@@ -43,7 +44,7 @@ const CommonPage = (props: CommonPageProps) => {
     copied.map((it: cardImgListProps) => (it.matched = false));
 
     return copied.sort(() => Math.random() - 0.5);
-  }, [cardList]);
+  }, [cardList, shuffle]);
 
   // 값이 null이 아니면 이미 해당 값은 선택되어 있다는 것
   const handleChoice = (card: cardImgListProps) => {

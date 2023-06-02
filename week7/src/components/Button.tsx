@@ -8,23 +8,29 @@ import CommonPage from "./CommonPage";
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
   const [level, setLevel] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<object>(
-    <CommonPage cardList={easyCardList} />
-  );
   const [shuffle, setShuffle] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<object>(
+    <CommonPage cardList={easyCardList} shuffle={shuffle} />
+  );
 
   useEffect(() => {
     switch (level) {
       case 0:
-        setCurrentPage(<CommonPage cardList={easyCardList} />);
+        setCurrentPage(
+          <CommonPage cardList={easyCardList} shuffle={shuffle} />
+        );
         break;
 
       case 1:
-        setCurrentPage(<CommonPage cardList={normalCardList} />);
+        setCurrentPage(
+          <CommonPage cardList={normalCardList} shuffle={shuffle} />
+        );
         break;
 
       case 2:
-        setCurrentPage(<CommonPage cardList={hardCardList} />);
+        setCurrentPage(
+          <CommonPage cardList={hardCardList} shuffle={shuffle} />
+        );
         break;
 
       default:
