@@ -57,10 +57,10 @@ const cardImgList = [
 ];
 
 function mixCardList(cardNum: number) {
-  const mixedEasyCardList = cardImgList
+  const mixedCardList = cardImgList
     .sort(() => Math.random() - 0.5)
     .slice(0, cardNum);
-  return mixedEasyCardList.concat(mixedEasyCardList);
+  return mixedCardList.concat(mixedCardList);
 }
 
 export const easyCardList = mixCardList(5);
