@@ -5,11 +5,11 @@ import "./SingleCard.css";
 
 export interface HeaderProps {
   score: number;
-  length: number;
+  totalScore: number;
 }
 
 const Header = (props: HeaderProps) => {
-  const { score, length } = props;
+  const { score, totalScore } = props;
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
     if (score !== 0) {
@@ -23,7 +23,7 @@ const Header = (props: HeaderProps) => {
         <strong> 💗 쵸키랑 푸키를 맞춰주세요! 💗</strong>
         <AnswerCounter className={animate ? "scale" : ""}>
           <strong>
-            {score} / {length}
+            {score} / {totalScore}
           </strong>
         </AnswerCounter>
       </ChokiPokiHeader>
