@@ -1,7 +1,9 @@
 // styled API를 사용하여 스타일링
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./SingleCard.css";
+import { animateState } from "../atom/headerAtom";
+import { useRecoilState } from "recoil";
 
 export interface HeaderProps {
   score: number;
@@ -10,11 +12,14 @@ export interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
   const { score, totalScore } = props;
-  const [animate, setAnimate] = useState(false);
+  const [animate, setAnimate] = useRecoilState(animateState);
+
   useEffect(() => {
     if (score !== 0) {
       setAnimate(true);
       setTimeout(() => setAnimate(false), 1000);
+    } else {
+      setAnimate(false);
     }
   }, [score]);
   return (
