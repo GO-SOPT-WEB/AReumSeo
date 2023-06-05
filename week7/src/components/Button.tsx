@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
-import { easyCardList } from "../constants/cardImgList";
-import { normalCardList } from "../constants/cardImgList";
-import { hardCardList } from "../constants/cardImgList";
+import {
+  easyCardList,
+  normalCardList,
+  hardCardList,
+} from "../constants/cardImgList";
 import CommonPage from "./CommonPage";
-import { cardImgListProps } from "./CommonPage";
+import { levelState, shuffleState, cardListState } from "../atom/atom";
+import { useRecoilState } from "recoil";
 
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
-  const [level, setLevel] = useState<number>(0);
-  const [shuffle, setShuffle] = useState<number>(0);
-  const [cardList, setCardList] = useState<cardImgListProps[]>(easyCardList);
+  const [level, setLevel] = useRecoilState(levelState);
+  const [shuffle, setShuffle] = useRecoilState(shuffleState);
+  const [cardList, setCardList] = useRecoilState(cardListState);
 
   useEffect(() => {
     switch (level) {
@@ -60,7 +63,6 @@ const Button = () => {
       </LevelBtnContainer>
 
       <CommonPage cardList={cardList} shuffle={shuffle} />
-      
     </>
   );
 };
