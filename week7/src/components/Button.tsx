@@ -4,33 +4,26 @@ import { easyCardList } from "../constants/cardImgList";
 import { normalCardList } from "../constants/cardImgList";
 import { hardCardList } from "../constants/cardImgList";
 import CommonPage from "./CommonPage";
+import { cardImgListProps } from "./CommonPage";
 
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
   const [level, setLevel] = useState<number>(0);
   const [shuffle, setShuffle] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<object>(
-    <CommonPage cardList={easyCardList} shuffle={shuffle} />
-  );
+  const [cardList, setCardList] = useState<cardImgListProps[]>(easyCardList);
 
   useEffect(() => {
     switch (level) {
       case 0:
-        setCurrentPage(
-          <CommonPage cardList={easyCardList} shuffle={shuffle} />
-        );
+        setCardList(easyCardList);
         break;
 
       case 1:
-        setCurrentPage(
-          <CommonPage cardList={normalCardList} shuffle={shuffle} />
-        );
+        setCardList(normalCardList);
         break;
 
       case 2:
-        setCurrentPage(
-          <CommonPage cardList={hardCardList} shuffle={shuffle} />
-        );
+        setCardList(hardCardList);
         break;
 
       default:
@@ -66,7 +59,8 @@ const Button = () => {
         })}
       </LevelBtnContainer>
 
-      {currentPage}
+      <CommonPage cardList={cardList} shuffle={shuffle} />
+      
     </>
   );
 };
