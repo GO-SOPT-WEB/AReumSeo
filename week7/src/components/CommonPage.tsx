@@ -1,9 +1,17 @@
 import styled from "styled-components";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import SingleCard from "./SingleCard";
 import Header from "./Header";
 import Modal from "./Modal";
 import ModalPortal from "./ModalPortal";
+import { useRecoilState } from "recoil";
+import {
+  choiceOneState,
+  choiceTwoState,
+  scoreState,
+  modalOnState,
+  disabledState,
+} from "../atom/commonPageAtom";
 
 export interface cardImgListProps {
   name?: string;
@@ -19,12 +27,11 @@ export interface CommonPageProps {
 const CommonPage = (props: CommonPageProps) => {
   const { cardList, shuffle } = props;
 
-  const [choiceOne, setChoiceOne] = useState<cardImgListProps | null>(null);
-  const [choiceTwo, setChoiceTwo] = useState<cardImgListProps | null>(null);
-  const [score, setScore] = useState<number>(0);
-  const [modalOn, setModalOn] = useState<boolean>(false);
-  const [disabled, setDisabled] = useState<boolean>(false);
-
+  const [choiceOne, setChoiceOne] = useRecoilState(choiceOneState);
+  const [choiceTwo, setChoiceTwo] = useRecoilState(choiceTwoState);
+  const [score, setScore] = useRecoilState(scoreState);
+  const [modalOn, setModalOn] = useRecoilState(modalOnState);
+  const [disabled, setDisabled] = useRecoilState(disabledState);
   const flippedCard = document.getElementsByClassName("flipped");
 
   const copiedCardList = useMemo(() => {
@@ -41,7 +48,6 @@ const CommonPage = (props: CommonPageProps) => {
     return copied.sort(() => Math.random() - 0.5);
   }, [cardList, shuffle]);
 
-
   const handleChoice = (card: cardImgListProps) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
@@ -51,8 +57,10 @@ const CommonPage = (props: CommonPageProps) => {
       setDisabled(true);
 
       if (choiceOne.name === choiceTwo.name) {
-        choiceOne.matched = true;
-        choiceTwo.matched = true;
+        setChoiceOne({ matched: true });
+        setChoiceTwo({ matched: true });
+        // choiceOne.matched = true;
+        // choiceTwo.matched = true;
         setScore((prev) => prev + 1);
         resetTurn();
 
