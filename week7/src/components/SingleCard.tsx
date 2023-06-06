@@ -1,11 +1,11 @@
 import cover from "../assets/image/cover.png";
 import styled from "styled-components";
 import "./SingleCard.css";
-import { cardImgListProps } from "./CommonPage";
+import { CardImgListProps } from "./CommonPage";
 
 export interface SingleCardProps {
   handleChoice: Function;
-  data: cardImgListProps;
+  data: CardImgListProps;
   flipped: boolean;
   disabled: boolean;
 }

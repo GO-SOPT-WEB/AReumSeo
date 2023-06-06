@@ -1,12 +1,12 @@
 import { atom } from "recoil";
-import { cardImgListProps } from "../components/CommonPage";
+import { CardImgListProps } from "../components/CommonPage";
 
-export const choiceOneState = atom<cardImgListProps | null>({
+export const choiceOneState = atom<CardImgListProps | null>({
   key: "choiceOneState",
   default: null,
 });
 
-export const choiceTwoState = atom<cardImgListProps | null>({
+export const choiceTwoState = atom<CardImgListProps | null>({
   key: "choiceTwoState",
   default: null,
 });
