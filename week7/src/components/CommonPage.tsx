@@ -13,14 +13,14 @@ import {
   disabledState,
 } from "../atom/commonPageAtom";
 
-export interface cardImgListProps {
+export interface CardImgListProps {
   name?: string;
   alt?: string;
   matched: boolean;
 }
 
 export interface CommonPageProps {
-  cardList: cardImgListProps[];
+  cardList: CardImgListProps[];
   shuffle: number;
 }
 
@@ -35,7 +35,6 @@ const CommonPage = (props: CommonPageProps) => {
   const flippedCard = document.getElementsByClassName("flipped");
 
   const copiedCardList = useMemo(() => {
-    setScore(0);
     const copied = JSON.parse(
       JSON.stringify(
         (Object.keys(cardList) as Array<keyof typeof cardList>)
@@ -43,33 +42,33 @@ const CommonPage = (props: CommonPageProps) => {
           .flat()
       )
     );
-    copied.map((it: cardImgListProps) => (it.matched = false));
+    copied.map((it: CardImgListProps) => (it.matched = false));
 
     return copied.sort(() => Math.random() - 0.5);
   }, [cardList, shuffle]);
 
-  const handleChoice = (card: cardImgListProps) => {
+  const handleChoice = (card: CardImgListProps) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
+
+  useEffect(() => {
+    setScore(0);
+  }, [copiedCardList]);
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setDisabled(true);
 
       if (choiceOne.name === choiceTwo.name) {
-        setChoiceOne({ matched: true });
-        setChoiceTwo({ matched: true });
-        // choiceOne.matched = true;
-        // choiceTwo.matched = true;
+        // 카드 쌍을 맞췄을 때 코드 구현 해야함
         setScore((prev) => prev + 1);
-        resetTurn();
 
         setModalOn(flippedCard.length === copiedCardList.length);
       } else {
         setTimeout(() => resetTurn(), 1000);
       }
     }
-  }, [choiceOne, choiceTwo, flippedCard, copiedCardList]);
+  }, [choiceOne, choiceTwo, flippedCard]);
 
   const resetTurn = () => {
     setChoiceOne(null);
@@ -82,7 +81,7 @@ const CommonPage = (props: CommonPageProps) => {
     <>
       <Header score={score} totalScore={copiedCardList.length / 2} />
       <CardContainer>
-        {copiedCardList.map((data: cardImgListProps, idx: number) => {
+        {copiedCardList.map((data: CardImgListProps, idx: number) => {
           return (
             <SingleCard
               key={idx}
