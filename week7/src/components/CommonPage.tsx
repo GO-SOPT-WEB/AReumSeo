@@ -1,17 +1,11 @@
 import styled from "styled-components";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SingleCard from "./SingleCard";
 import Header from "./Header";
 import Modal from "./Modal";
 import ModalPortal from "./ModalPortal";
 import { useRecoilState } from "recoil";
-import {
-  choiceOneState,
-  choiceTwoState,
-  scoreState,
-  modalOnState,
-  disabledState,
-} from "../atom/commonPageAtom";
+import { scoreState, modalOnState, disabledState } from "../atom/atom";
 
 export interface CardImgListProps {
   name?: string;
@@ -27,8 +21,8 @@ export interface CommonPageProps {
 const CommonPage = (props: CommonPageProps) => {
   const { cardList, shuffle } = props;
 
-  const [choiceOne, setChoiceOne] = useRecoilState(choiceOneState);
-  const [choiceTwo, setChoiceTwo] = useRecoilState(choiceTwoState);
+  const [choiceOne, setChoiceOne] = useState<CardImgListProps | null>(null);
+  const [choiceTwo, setChoiceTwo] = useState<CardImgListProps | null>(null);
   const [score, setScore] = useRecoilState(scoreState);
   const [modalOn, setModalOn] = useRecoilState(modalOnState);
   const [disabled, setDisabled] = useRecoilState(disabledState);
@@ -60,17 +54,20 @@ const CommonPage = (props: CommonPageProps) => {
       setDisabled(true);
 
       if (choiceOne.name === choiceTwo.name) {
-        // 카드 쌍을 맞췄을 때 코드 구현 해야함
+        choiceOne.matched = true;
+        choiceTwo.matched = true;
+
         setScore((prev) => prev + 1);
+        resetCardSet();
 
         setModalOn(flippedCard.length === copiedCardList.length);
       } else {
-        setTimeout(() => resetTurn(), 1000);
+        setTimeout(() => resetCardSet(), 1000);
       }
     }
-  }, [choiceOne, choiceTwo, flippedCard]);
+  }, [choiceOne, choiceTwo, flippedCard, copiedCardList]);
 
-  const resetTurn = () => {
+  const resetCardSet = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
 
