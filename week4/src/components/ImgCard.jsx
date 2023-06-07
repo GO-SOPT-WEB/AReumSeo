@@ -6,11 +6,11 @@ import Skeleton from "./Skeleton";
 const ImgCard = (props) => {
   const { data, isLoading, isError } = props;
 
-  const temp = data.main && data.main.temp;
-  const feels_like = data.main && data.main.feels_like;
-  const maxTemp = data.main && data.main.temp_max;
-  const minTemp = data.main && data.main.temp_min;
-  const clouds = (data.clouds && data.clouds.all) * 100;
+  const temp = data?.main?.temp;
+  const feels_like = data?.main?.feels_like;
+  const maxTemp = data?.main?.temp_max;
+  const minTemp = data?.main?.temp_min;
+  const clouds = data?.clouds?.all * 100;
 
   const weatherToday = JSON.stringify(
     data.weather && data.weather[0].description
@@ -18,7 +18,7 @@ const ImgCard = (props) => {
   const filteredDay = WEATHER_TYPE.filter(
     (it) => JSON.stringify(it.description) === weatherToday
   );
-  const imgSrc = filteredDay && filteredDay[0] ? filteredDay[0].imgURL : "";
+  const imgSrc = filteredDay?.[0]?.imgURL || "";
 
   const onErrorImg = (e) => {
     e.target.src = default_Img;
@@ -35,7 +35,7 @@ const ImgCard = (props) => {
               {data.dt_txt ? data.dt_txt.slice(5, 10) : data.name}
             </strong>
           </ImgWrapperHeader>
-          <img src={imgSrc} onError={onErrorImg} />
+          <img src={imgSrc} onError={onErrorImg} alt="날씨 이미지" />
           <WeatherInfoContainer>
             <WeatherInfo>
               <p>온도</p>
