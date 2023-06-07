@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import "./SingleCard.css";
-import { animateState } from "../atom/headerAtom";
+import { animateState } from "../atom/atom";
 import { useRecoilState } from "recoil";
 
 export interface HeaderProps {

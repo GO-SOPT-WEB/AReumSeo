@@ -15,3 +15,23 @@ export const cardListState = atom({
   key: "cardListState",
   default: easyCardList,
 });
+
+export const scoreState = atom({
+  key: "scoreState",
+  default: 0,
+});
+
+export const modalOnState = atom({
+  key: "modalOnState",
+  default: false,
+});
+
+export const disabledState = atom({
+  key: "disabledState",
+  default: false,
+});
+
+export const animateState = atom({
+  key: "animateState",
+  default: false,
+});

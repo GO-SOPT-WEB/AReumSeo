@@ -6,7 +6,7 @@ import {
   hardCardList,
 } from "../constants/cardImgList";
 import CommonPage from "./CommonPage";
-import { levelState, shuffleState, cardListState } from "../atom/buttonAtom";
+import { levelState, shuffleState, cardListState } from "../atom/atom";
 import { useRecoilState } from "recoil";
 
 const Button = () => {
