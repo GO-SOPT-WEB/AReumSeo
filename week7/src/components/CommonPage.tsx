@@ -47,6 +47,7 @@ const CommonPage = (props: CommonPageProps) => {
 
   useEffect(() => {
     setScore(0);
+    resetCardSet();
   }, [copiedCardList]);
 
   useEffect(() => {
