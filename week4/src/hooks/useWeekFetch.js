@@ -8,7 +8,7 @@ const useWeekFetch = (initialUrl) => {
   const getDetailCardInfo = () => {
     setIsLoading(true);
     setIsError(false);
-    
+
     fetch(initialUrl)
       .then((res) => {
         return res.json();
@@ -24,7 +24,7 @@ const useWeekFetch = (initialUrl) => {
           setIsError(true);
         }
       })
-      .catch((err) => console.log(err));
+      .catch(() => setIsError(true));
   };
 
   useEffect(() => {

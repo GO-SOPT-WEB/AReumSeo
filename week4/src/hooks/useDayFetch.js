@@ -22,7 +22,7 @@ const useDayFetch = (initialUrl) => {
           setIsError(true);
         }
       })
-      .catch((err) => console.log(err));
+      .catch(() => setIsError(true));
   };
 
   useEffect(() => {
