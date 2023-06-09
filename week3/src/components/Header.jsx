@@ -7,7 +7,7 @@ import "./SingleCard.css";
 const Header = ({ counter, length }) => {
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
-    if (counter != 0) {
+    if (counter !== 0) {
       setAnimate(true);
       setTimeout(() => setAnimate(false), 1000);
     }
