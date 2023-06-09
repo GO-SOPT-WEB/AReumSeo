@@ -1,0 +1,259 @@
+@font-face {
+  font-family: "BMEULJIRO";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/BMEULJIRO.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: "BMEULJIRO";
+
+  text-align: center;
+  background-color: #dbe5f1;
+}
+
+header {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 3px #4699b7, 3px 0 #4699b7;
+}
+
+/* myCategory */
+.myCategory {
+  width: 90%;
+  height: 120%;
+  color: #000;
+  border-radius: 30px;
+  box-shadow: 0px 7px 7px #bed1a9;
+  background-color: #faf3d7;
+}
+
+.myCategory button {
+  font-family: "BMEULJIRO";
+  font-size: 17px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px 5px;
+  background-color: #dbe5f1;
+  color: #4699b7;
+  box-shadow: 0px 3px 3px #4699b7;
+}
+
+/* calendar */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+  width: 90%;
+  background-color: #bed1a9;
+  border-radius: 30px;
+  box-shadow: 0px 7px 7px #faf3d7;
+  color: #faf3d7;
+  margin: -15px 0px 30px 0px;
+}
+
+.calendar article {
+  place-items: center;
+  font-size: 20px;
+  line-height: 0.7;
+}
+
+.calendar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+}
+
+.calendar li {
+  margin: 15px 0;
+  justify-content: center;
+  align-self: center;
+}
+
+.calendar__todoRemainNum {
+  position: relative;
+  z-index: 1;
+  color: #bed1a9;
+  font-size: 20px;
+}
+
+.calendar__todoRemainNum:before {
+  position: absolute;
+  color: #faf3d7;
+  content: "♥";
+  top: -6px;
+  left: -17px;
+  font-size: 50px;
+  z-index: -1;
+}
+
+#today {
+  color: #faf3d7;
+}
+
+#today:before {
+  color: #f25766;
+}
+
+/* todo */
+
+.todo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 80%;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: #faf3d7;
+  box-shadow: 0px 5px 5px rgba(198, 191, 152, 0.7);
+  width: 200px;
+  height: 70px;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.modalBg {
+  margin: auto;
+}
+
+.modalContainer input,
+.modalContainer button {
+  font-family: "BMEULJIRO";
+  color: #666666;
+}
+
+.todo article {
+  margin: 0 20px 30px -10px;
+}
+
+.category {
+  font-size: 25px;
+  border-radius: 30px;
+  color: #faf3d7;
+  box-shadow: 0px 5px 5px rgba(198, 191, 152, 0.7);
+  padding: 3px 20px;
+}
+
+#a1 {
+  background-color: #c2b9d0;
+}
+
+#a2 {
+  background-color: #e4bcb1;
+}
+
+#a3 {
+  background-color: #aed0db;
+}
+
+#a4 {
+  background-color: #acbd98;
+}
+
+#a5 {
+  background-color: #c8b3aa;
+}
+
+.todoCheck {
+  display: flex;
+  position: relative;
+  margin-top: 20px;
+  appearance: none;
+}
+
+.todoCheck:before {
+  content: "♥";
+  display: inline-block;
+  font-size: 20px;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  color: #faf3d7;
+  background-color: #00a3cc;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.todoCheck:checked:before {
+  content: "♥";
+  display: inline-block;
+  font-size: 17px;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  color: #faf3d7;
+  background-color: #f25766;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.todo p {
+  display: flex;
+  font-size: 17px;
+  color: #666666;
+  text-align: left;
+  margin: -25px 0px 0px 25px;
+}
+
+.todo button {
+  font-size: 15px;
+  color: #f25766;
+  background-color: #faf3d7;
+  border-radius: 30px;
+  border: none;
+  margin-left: 10px;
+  padding: 3px;
+}
+
+/* footer */
+
+footer {
+  display: flex;
+  margin: auto;
+  margin-bottom: 30px;
+  text-align: center;
+  justify-content: center;
+}
+
+.categoryFooter {
+  padding-top: 550px;
+}
+
+footer button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 90px;
+  margin: 0px 20px;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: #faf3d7;
+  background-color: #a4b8ac;
+  opacity: 0.7;
+  box-shadow: 0px 5px 5px #faf3d7;
+  font-family: "BMEULJIRO";
+  font-size: 25px;
+  cursor: pointer;
+}
+
+footer p {
+  margin: 0;
+}
