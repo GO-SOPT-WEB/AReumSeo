@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { easyCardList } from "../constants/cardImgList";
-import { normalCardList } from "../constants/cardImgList";
-import { hardCardList } from "../constants/cardImgList";
+import {
+  easyCardList,
+  normalCardList,
+  hardCardList,
+} from "../constants/cardImgList";
 import CommonPage from "./CommonPage";
 
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
   // 기본 난이도 'EASY'로 설정
   const [isClick, setIsClick] = useState(0);
-  const [currentPage, setCurrentPage] = useState(<CommonPage />);
+  const [cardList, setCardList] = useState(easyCardList);
   const [shuffle, setShuffle] = useState(0);
 
   useEffect(() => {
     switch (isClick) {
       case 0:
-        setCurrentPage(<CommonPage cardList={easyCardList} />);
+        setCardList(easyCardList);
         break;
 
       case 1:
-        setCurrentPage(<CommonPage cardList={normalCardList} />);
+        setCardList(normalCardList);
         break;
 
       case 2:
-        setCurrentPage(<CommonPage cardList={hardCardList} />);
+        setCardList(hardCardList);
         break;
 
       default:
@@ -59,7 +61,7 @@ const Button = () => {
         })}
       </LevelBtnContainer>
 
-      {currentPage}
+      {<CommonPage cardList={cardList} />}
     </>
   );
 };
@@ -87,7 +89,7 @@ const ResetButton = styled.button`
     color: ${({ theme }) => theme.colors.darkGreen};
   }
 
-  font-family: ${(props) => props.theme.font.fontFamily};
+  font-family: ${({ theme }) => theme.font.buttonFont};
   font-size: 1.5rem;
 `;
 
@@ -114,6 +116,6 @@ const LevelButton = styled.button`
   color: ${({ theme, isClick }) =>
     isClick ? theme.colors.lightPink : theme.colors.purple};
 
-  font-family: ${(props) => props.theme.font.fontFamily};
+  font-family: ${({ theme }) => theme.font.buttonFont};
   font-size: 1.3rem;
 `;
