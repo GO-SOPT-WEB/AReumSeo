@@ -17,7 +17,8 @@ const colors = {
 };
 
 const font = {
-  fontFamily: "LOTTERIACHAB",
+  buttonFont: "LOTTERIACHAB",
+  modalFont: "UhBeeSe_hyun",
 };
 
 const theme = {
