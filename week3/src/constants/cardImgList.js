@@ -56,27 +56,15 @@ const cardImgList = [
   },
 ];
 
-function mixEasyCardList() {
-  const mixedEasyCardList = cardImgList
+function mixCardList(cardNum) {
+  const mixedCardList = cardImgList
     .sort(() => Math.random() - 0.5)
-    .slice(0, 5);
-  return mixedEasyCardList.concat(mixedEasyCardList);
+    .slice(0, cardNum);
+  return mixedCardList.concat(mixedCardList);
 }
 
-function mixNormalCardList() {
-  const mixedNormalCardList = cardImgList
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 7);
-  return mixedNormalCardList.concat(mixedNormalCardList);
-}
+export const easyCardList = mixCardList(5);
 
-function mixHardCardList() {
-  const mixedHardCardList = cardImgList.sort(() => Math.random() - 0.5);
-  return mixedHardCardList.concat(mixedHardCardList);
-}
+export const normalCardList = mixCardList(7);
 
-export const easyCardList = mixEasyCardList();
-
-export const normalCardList = mixNormalCardList();
-
-export const hardCardList = mixHardCardList();
+export const hardCardList = mixCardList(9);
