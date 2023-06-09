@@ -1,37 +1,40 @@
 // styled API를 사용하여 스타일링
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./SingleCard.css";
+import { animateState } from "../atom/atom";
+import { useRecoilState } from "recoil";
 
-const Header = ({ counter, length }) => {
-  const [animate, setAnimate] = useState(false);
+export interface HeaderProps {
+  score: number;
+  totalScore: number;
+}
+
+const Header = (props: HeaderProps) => {
+  const { score, totalScore } = props;
+  const [animate, setAnimate] = useRecoilState(animateState);
+
   useEffect(() => {
-    if (counter !== 0) {
+    if (score !== 0) {
       setAnimate(true);
       setTimeout(() => setAnimate(false), 1000);
+    } else {
+      setAnimate(false);
     }
-  }, [counter]);
+  }, [score]);
   return (
     <>
       <ChokiPokiHeader>
         <strong> 💗 쵸키랑 푸키를 맞춰주세요! 💗</strong>
         <AnswerCounter className={animate ? "scale" : ""}>
           <strong>
-            {counter} / {length}
+            {score} / {totalScore}
           </strong>
         </AnswerCounter>
       </ChokiPokiHeader>
     </>
   );
 };
-
-Header.propTypes = {
-  counter: PropTypes.number,
-  length: PropTypes.number,
-};
-
-export default Header;
 
 // tagged template literal 을 사용
 // Components 이름을 대문자로 선언
@@ -70,3 +73,5 @@ const AnswerCounter = styled.h1`
       0 10px 10px rgba(0, 0, 0, 0.4);
   }
 `;
+
+export default Header;

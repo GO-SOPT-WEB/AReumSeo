@@ -1,7 +1,13 @@
-import PropTypes from "prop-types";
+import { MouseEventHandler } from "react";
 import styled from "styled-components";
 
-const Modal = ({ onClose }) => {
+export interface ModalProps {
+  onClose: MouseEventHandler<HTMLButtonElement>;
+}
+
+const Modal = (props: ModalProps) => {
+  const { onClose } = props;
+
   return (
     <ModalContainer>
       <ModalContent>
@@ -11,12 +17,6 @@ const Modal = ({ onClose }) => {
     </ModalContainer>
   );
 };
-
-Modal.propTypes = {
-  onClose: PropTypes.func,
-};
-
-export default Modal;
 
 const ModalContainer = styled.div`
   display: flex;
@@ -48,6 +48,8 @@ const GoBackBtn = styled.button`
   background-color: ${({ theme }) => theme.colors.darkPink_modal};
   color: ${({ theme }) => theme.colors.white};
 
-  font-family: ${({ theme }) => theme.font.modalFont};
+  font-family: ${({ theme }) => theme.font.fontFamily_modal};
   font-size: 1rem;
 `;
+
+export default Modal;

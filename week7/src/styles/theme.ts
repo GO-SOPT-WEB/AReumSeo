@@ -1,3 +1,5 @@
+import { DefaultTheme } from "styled-components";
+
 const colors = {
   white: "#FFFFF0",
   lightPink: "#FEE1E8",
@@ -17,12 +19,13 @@ const colors = {
 };
 
 const font = {
-  buttonFont: "LOTTERIACHAB",
-  modalFont: "UhBeeSe_hyun",
+  fontFamily: "LOTTERIACHAB",
+  fontFamily_modal: "UhBeeSe_hyun",
 };
 
-const theme = {
+const theme: DefaultTheme = {
   colors,
   font,
 };
+
 export default theme;

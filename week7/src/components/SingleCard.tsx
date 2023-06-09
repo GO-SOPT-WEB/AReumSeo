@@ -1,9 +1,18 @@
-import cover from "../assets/cover.png";
+import cover from "../assets/image/cover.png";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import "./SingleCard.css";
+import { CardImgListProps } from "./CommonPage";
 
-const SingleCard = ({ handleChoice, data, flipped, disabled }) => {
+export interface SingleCardProps {
+  handleChoice: Function;
+  data: CardImgListProps;
+  flipped: boolean;
+  disabled: boolean;
+}
+
+const SingleCard = (props: SingleCardProps) => {
+  const { handleChoice, data, flipped, disabled } = props;
+
   const handleClick = () => {
     if (!disabled) {
       handleChoice(data);
@@ -22,16 +31,6 @@ const SingleCard = ({ handleChoice, data, flipped, disabled }) => {
     </div>
   );
 };
-
-// js는 동적으로 데이터 타입이 동적으로 지정되기 때문에, 엉뚱한 데이터가 들어오지 않도록 prop type 지정해줌
-SingleCard.propTypes = {
-  handleChoice: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
-  flipped: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
-};
-
-export default SingleCard;
 
 const CardFront = styled.div`
   display: flex;
@@ -59,3 +58,5 @@ const CardBack = styled.div`
   background-color: ${({ theme }) => theme.colors.purple};
   box-shadow: 1rem 1rem 1rem ${({ theme }) => theme.colors.pink};
 `;
+
+export default SingleCard;

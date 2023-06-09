@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import {
   easyCardList,
@@ -6,13 +6,14 @@ import {
   hardCardList,
 } from "../constants/cardImgList";
 import CommonPage from "./CommonPage";
+import { levelState, shuffleState, cardListState } from "../atom/atom";
+import { useRecoilState } from "recoil";
 
 const Button = () => {
   const levelData = ["EASY", "NORMAL", "HARD"];
-  // 기본 난이도 'EASY'로 설정
-  const [level, setLevel] = useState(0);
-  const [cardList, setCardList] = useState(easyCardList);
-  const [shuffle, setShuffle] = useState(0);
+  const [level, setLevel] = useRecoilState(levelState);
+  const [shuffle, setShuffle] = useRecoilState(shuffleState);
+  const [cardList, setCardList] = useRecoilState(cardListState);
 
   useEffect(() => {
     switch (level) {
@@ -50,7 +51,7 @@ const Button = () => {
             <LevelButton
               key={idx}
               type="button"
-              isClick={idx === level}
+              isClicked={idx === level}
               onClick={() => {
                 setLevel(idx);
               }}
@@ -61,12 +62,10 @@ const Button = () => {
         })}
       </LevelBtnContainer>
 
-      {<CommonPage cardList={cardList} />}
+      <CommonPage cardList={cardList} shuffle={shuffle} />
     </>
   );
 };
-
-export default Button;
 
 const ResetButton = styled.button`
   display: flex;
@@ -89,7 +88,7 @@ const ResetButton = styled.button`
     color: ${({ theme }) => theme.colors.darkGreen};
   }
 
-  font-family: ${({ theme }) => theme.font.buttonFont};
+  font-family: ${(props) => props.theme.font.fontFamily};
   font-size: 1.5rem;
 `;
 
@@ -103,19 +102,21 @@ const LevelBtnContainer = styled.div`
   right: 0;
 `;
 
-const LevelButton = styled.button`
+const LevelButton = styled.button<{ isClicked: boolean }>`
   margin: 0 1rem;
   padding: 1rem 1.5rem;
   box-shadow: 0.3rem 0.3rem 0.3rem ${({ theme }) => theme.colors.purple};
   border: 0;
   border-radius: 1rem;
 
-  background-color: ${({ theme, isClick }) =>
-    isClick ? theme.colors.purple : theme.colors.lightPink};
+  background-color: ${({ theme, isClicked }) =>
+    isClicked ? theme.colors.purple : theme.colors.lightPink};
 
-  color: ${({ theme, isClick }) =>
-    isClick ? theme.colors.lightPink : theme.colors.purple};
+  color: ${({ theme, isClicked }) =>
+    isClicked ? theme.colors.lightPink : theme.colors.purple};
 
-  font-family: ${({ theme }) => theme.font.buttonFont};
+  font-family: ${(props) => props.theme.font.fontFamily};
   font-size: 1.3rem;
 `;
+
+export default Button;
