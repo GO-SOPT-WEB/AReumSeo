@@ -3,9 +3,9 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import "./SingleCard.css";
 
-const SingleCard = ({ handleChoice, data, flipped, disalbed }) => {
+const SingleCard = ({ handleChoice, data, flipped, disabled }) => {
   const handleClick = () => {
-    if (!disalbed) {
+    if (!disabled) {
       handleChoice(data);
     }
   };
@@ -28,7 +28,7 @@ SingleCard.propTypes = {
   handleChoice: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   flipped: PropTypes.bool.isRequired,
-  disalbed: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default SingleCard;
@@ -38,8 +38,8 @@ const CardFront = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 15rem;
-  height: 17rem;
+  width: 13rem;
+  height: 15rem;
   margin: 0rem 1rem;
   border-radius: 2rem;
   background-color: ${({ theme }) => theme.colors.lightPink};
@@ -51,8 +51,8 @@ const CardBack = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 15rem;
-  height: 17rem;
+  width: 13rem;
+  height: 15rem;
   margin: 1rem;
   border-radius: 2rem;
 
